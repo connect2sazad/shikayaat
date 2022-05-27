@@ -1,5 +1,10 @@
 @import url(./colors.css);
 
+@font-face {
+    font-family: 'Strawberry Bubble Gum';
+    src: url('../fonts/Strawberrybubblegum-x3y38.ttf');
+}
+
 html,
 body{
     height: 100%;
@@ -7,6 +12,7 @@ body{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 body {
     background: var(--body-bg);
@@ -20,8 +26,32 @@ body {
     height: 100%!important;
 }
 
+.height-70{
+    height: 70%!important;
+}
+
+.height-60{
+    height: 60%!important;
+}
+
+.height-30{
+    height: 30%!important;
+}
+
+.height-20{
+    height: 20%!important;
+}
+
+.height-10{
+    height: 10%!important;
+}
+
 .padding-5{
     padding: 5px!important;
+}
+
+.width-100{
+    width: 100%!important;
 }
 
 .row{
@@ -70,4 +100,39 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.img-holder,
+.img-holder img{
+    height: 100%;
+    width: 100%;
+}
+
+.input-control{
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.input-control label{
+    margin-bottom: 10px;
+    color: rgb(73, 73, 73);
+}
+
+.input-control input{
+    height: auto;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 0;
+    border-bottom: 2px solid var(--form-input-border);
+    border-bottom-color: #a8c0ff;  /* fallback for old browsers */
+    border-bottom-color: -webkit-linear-gradient(to bottom, #3f2b96, #a8c0ff);  /* Chrome 10-25, Safari 5.1-6 */
+    border-bottom-color: linear-gradient(to bottom, #3f2b96, #a8c0ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.input-control input:focus{
+    outline: none;
 }
