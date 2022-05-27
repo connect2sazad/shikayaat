@@ -1,0 +1,25 @@
+@import url(./base.css);
+
+.form-inner-wrapper{
+    height: 80%;
+    width: 80%;
+    border-radius: var(--primary-border-radius);
+    background-color: var(--form-inner-wrapper-bg);
+}
+
+.image-conatiner{
+    background-image: url(../images/form-bg.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+    border-bottom-left-radius: var(--primary-border-radius);
+    border-top-left-radius: var(--primary-border-radius);
+    color: var(--primary-color);
+}
+
+.form-side-content{
+    height: 90%;
+    width: 90%;
+    padding: 20px;
+}
