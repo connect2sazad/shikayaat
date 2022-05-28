@@ -43,6 +43,9 @@
     font-family: 'Strawberry Bubble Gum';
     letter-spacing: 3px;
     font-size: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .welcome-text-container{
