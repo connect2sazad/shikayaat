@@ -236,13 +236,69 @@ ul.control-menu-list li:hover,
     flex-direction: row;
 }
 
+
+/* LEFT NAV Start */
+
 .left-nav-section{
     width: 20%;
     height: 100%;
     border-right: 2px solid var(--section-border-color);
+    background-color: var(--left-nav-bg);
 }
+
+.left-nav-section ul{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: 100%;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.left-nav-section ul a{
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 10px;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.left-nav-section ul a:hover{
+    background-color: var(--left-nav-menu-hover);
+    color: var(--left-nav-bg);
+}
+
+.left-nav-section ul li{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.menu-item-icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-item-name{
+    margin-left: 10px;
+}
+
+.current-menu{
+    background-color: var(--left-nav-menu-hover);
+    color: var(--left-nav-bg);
+}
+
+/* LEFT NAV End */
 
 .right-content-section{
     width: 80%;
     height: 100%;
+    background: var(--body-bg);
+    background: var(--body-moz-bg);
+    background: var(--body-webkit-bg);
+    background: var(--body-gradient-bg);
+    filter: var(--body-filter);
 }
