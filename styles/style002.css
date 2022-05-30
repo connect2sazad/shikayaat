@@ -1,6 +1,6 @@
 @import url(./base.css);
 
-.project-title-container{
+.project-title-container {
     height: 100%;
     width: auto;
     display: flex;
@@ -15,7 +15,34 @@
     -webkit-user-drag: none;
 }
 
-.logo-img{
+.logo-img {
     height: 100%;
     width: var(--header-height);
+}
+
+.content-wrapper .input-control input[type="text"],
+.content-wrapper .input-control select,
+.content-wrapper .input-control textarea {
+    background-color: transparent;
+}
+
+.content-wrapper .input-control label,
+.content-wrapper .input-control select,
+.content-wrapper .input-control textarea,
+.content-wrapper .input-control input[type="text"] {
+    color: var(--primary-color);
+}
+
+.content-wrapper .input-control textarea{
+    resize: vertical;
+}
+
+.content-wrapper .input-control select option {
+    margin: 40px!important;
+    background: rgba(0, 0, 0, 0.3);
+    color: #fff;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+    background-color: var(--primary-button-color);
+    padding-top: 10px!important;
+    padding-bottom: 10px!important;
 }

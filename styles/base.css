@@ -23,13 +23,17 @@ body {
     filter: var(--body-filter);
 }
 
-main{
+main {
     width: 100%;
     height: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;   
+    align-items: center;
     flex-direction: column;
+}
+
+::-webkit-scrollbar{
+    width: 1px;
 }
 
 .height-100 {
@@ -132,7 +136,9 @@ main{
     color: rgb(73, 73, 73);
 }
 
-.input-control input {
+.input-control input,
+.input-control select,
+.input-control textarea {
     height: auto;
     width: calc(100% - 20px);
     padding: 10px;
@@ -142,6 +148,11 @@ main{
     border-bottom-color: #a8c0ff;
     border-bottom-color: -webkit-linear-gradient(to right, #3f2b96, #a8c0ff);
     border-bottom-color: linear-gradient(to right, #3f2b96, #a8c0ff);
+    outline: none;
+}
+
+.input-control select {
+    width: 100%;
 }
 
 .input-control input:focus {
@@ -159,12 +170,21 @@ main{
 }
 
 .input-control input[type=submit]:hover {
-    background: var(--primary-button-color-hover);;
+    background: var(--primary-button-color-hover);
+    ;
+}
+
+.input-control input[type="file"]::-webkit-file-upload-button {
+    display: none;
+}
+
+.input-control input[type="file"]{
+    color: var(--primary-color);
 }
 
 /* HEADER SECTION Start */
 
-header{
+header {
     width: calc(100% - 30px);
     height: var(--header-height);
     padding: 15px;
@@ -173,9 +193,11 @@ header{
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
+    position: fixed;
+    top: 0;
 }
 
-.project-title{
+.project-title {
     height: 100%;
     width: auto;
     margin-left: 15px;
@@ -185,7 +207,7 @@ header{
     color: var(--primary-color);
 }
 
-.control-menu{
+.control-menu {
     height: 100%;
     width: auto;
     display: flex;
@@ -194,7 +216,7 @@ header{
     align-items: center;
 }
 
-ul.control-menu-list{
+ul.control-menu-list {
     color: var(--primary-color);
     list-style: none;
     display: flex;
@@ -203,7 +225,7 @@ ul.control-menu-list{
     width: auto;
 }
 
-ul.control-menu-list li{
+ul.control-menu-list li {
     margin-left: 15px;
     font-size: 16px;
     font-weight: 500;
@@ -211,42 +233,43 @@ ul.control-menu-list li{
 }
 
 ul.control-menu-list li:hover,
-.logout-btn:hover{
+.logout-btn:hover {
     text-decoration: underline;
 }
 
-.current-login{
+.current-login {
     margin-left: 10px;
     font-size: 16px;
     font-weight: 500;
     color: var(--primary-color);
 }
 
-.logout-btn{
+.logout-btn {
     cursor: pointer;
 }
 
 /* HEADER SECTION End */
 
 /* CONTENT */
-.section-holder{
+.section-holder {
     height: calc(100% - var(--header-height));
     width: 100%;
     display: flex;
     flex-direction: row;
+    margin-top: var(--header-height);
 }
 
 
 /* LEFT NAV Start */
 
-.left-nav-section{
+.left-nav-section {
     width: 20%;
     height: 100%;
     border-right: 2px solid var(--section-border-color);
     background-color: var(--left-nav-bg);
 }
 
-.left-nav-section ul{
+.left-nav-section ul {
     list-style: none;
     display: flex;
     flex-direction: column;
@@ -256,7 +279,7 @@ ul.control-menu-list li:hover,
     margin-top: 20px;
 }
 
-.left-nav-section ul a{
+.left-nav-section ul a {
     font-size: 20px;
     font-weight: 500;
     cursor: pointer;
@@ -265,35 +288,37 @@ ul.control-menu-list li:hover,
     text-decoration: none;
 }
 
-.left-nav-section ul a:hover{
+.left-nav-section ul a:hover {
     background-color: var(--left-nav-menu-hover);
     color: var(--left-nav-bg);
 }
 
-.left-nav-section ul li{
+.left-nav-section ul li {
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
-.menu-item-icon{
+.menu-item-icon {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.menu-item-name{
+.menu-item-name {
     margin-left: 10px;
 }
 
-.current-menu{
+.current-menu {
     background-color: var(--left-nav-menu-hover);
     color: var(--left-nav-bg);
 }
 
 /* LEFT NAV End */
 
-.right-content-section{
+/* RIGHT CONTENT Start */
+
+.right-content-section {
     width: 80%;
     height: 100%;
     background: var(--body-bg);
@@ -301,4 +326,15 @@ ul.control-menu-list li:hover,
     background: var(--body-webkit-bg);
     background: var(--body-gradient-bg);
     filter: var(--body-filter);
+    overflow: auto;
 }
+
+.content-wrapper {
+    padding: 30px;
+    width: calc(100% - 100px);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* RIGHT CONTENT End */
