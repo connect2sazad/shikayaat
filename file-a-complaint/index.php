@@ -16,18 +16,20 @@ include_once "../assets/asset_manager.php";
 <body>
     <main>
         <?php
-        get_header(false);
+            get_header('../');
         ?>
         <div class="section-holder">
             <?php
-            get_sidebar(false);
+                get_sidebar('file-a-complaint');
             ?>
-            <section class="right-content-section" id="right-content-section">wqqwer</section>
+            <section class="right-content-section" id="right-content-section">
+                
+            </section>
         </div>
     </main>
 
     <!-- scripts -->
-    <script src="./script/base.js"></script>
+    <script src="../script/base.js"></script>
     <!-- scripts -->
 </body>
 
