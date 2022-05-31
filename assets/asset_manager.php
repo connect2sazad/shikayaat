@@ -57,7 +57,7 @@
         echo sidebar_menu_item('File a Complaint', 'file-a-complaint', $icons['file-a-complaint'], $selected_menu=='file-a-complaint');
         echo sidebar_menu_item('All Complaints', 'all-complaints', $icons['all-complaints'], $selected_menu=='all-complaints');
         echo sidebar_menu_item('Search Complaint', 'search-complaint', $icons['search-complaint'], $selected_menu=='search-complaint');
-        echo sidebar_menu_item('Settings', 'settings', $icons['settings'], $selected_menu=='settinhgs');
+        echo sidebar_menu_item('Settings', 'settings', $icons['settings'], $selected_menu=='settings');
         echo sidebar_menu_item('Support', 'support', $icons['support'], $selected_menu=='support');
         echo sidebar_menu_item('Logout', 'logout', $icons['logout'], $selected_menu=='logout');
         echo '<a href="#collapse_expand" id="collapse_expand">
@@ -104,11 +104,11 @@
             </div>
             <div class="control-menu">
                 <ul class="control-menu-list">
-                    <li>home</li>
-                    <li>about</li>
-                    <li>sales</li>
-                    <li>support</li>
-                    <li>connect2sazad</li>
+                    <li><a href="http://127.0.0.1/shikayaat/">home</a></li>
+                    <li><a href="./about">about</a></li>
+                    <li><a href="./sales">sales</a></li>
+                    <li><a href="./support">support</a></li>
+                    <li><a href="./settings">connect2sazad</a></li>
                     <li>logout</li>
                 </ul>
             </div>

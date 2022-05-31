@@ -12,7 +12,7 @@ body {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: Calibri, 'Trebuchet MS', sans-serif;
 }
 
 body {
@@ -30,6 +30,10 @@ main {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
+
+.set-logo-font{
+    font-family: 'Strawberry Bubble Gum';
 }
 
 ::-webkit-scrollbar{
@@ -138,17 +142,23 @@ main {
 
 .input-control input,
 .input-control select,
-.input-control textarea {
+.input-control textarea,
+.textarea-resembler{
     height: auto;
     width: calc(100% - 20px);
     padding: 10px;
-    font-size: 16px;
+    font-size: 20px;
     border: 0;
     border-bottom: 2px solid var(--form-input-border);
     border-bottom-color: #a8c0ff;
     border-bottom-color: -webkit-linear-gradient(to right, #3f2b96, #a8c0ff);
     border-bottom-color: linear-gradient(to right, #3f2b96, #a8c0ff);
     outline: none;
+    font-family: Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.textarea-resembler{
+    color: var(--primary-color);
 }
 
 .input-control select {
@@ -180,6 +190,11 @@ main {
 
 .input-control input[type="file"]{
     color: var(--primary-color);
+}
+
+.form-heading{
+    color: var(--primary-color);
+    font-size: 30px;
 }
 
 /* HEADER SECTION Start */
@@ -237,6 +252,11 @@ ul.control-menu-list li:hover,
     text-decoration: underline;
 }
 
+ul.control-menu-list li a{
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
 .current-login {
     margin-left: 10px;
     font-size: 16px;
@@ -276,7 +296,7 @@ ul.control-menu-list li:hover,
     height: auto;
     width: 100%;
     padding: 0;
-    margin-top: 20px;
+    margin-top: 40px;
 }
 
 .left-nav-section ul a {

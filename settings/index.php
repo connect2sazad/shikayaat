@@ -10,7 +10,7 @@ include_once "../assets/asset_manager.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../styles/style002.css">
-    <title>File a Complaint - shikayaat — the digital complaint box</title>
+    <title>User Settings - shikayaat — the digital complaint box</title>
     
 </head>
 
@@ -21,63 +21,49 @@ include_once "../assets/asset_manager.php";
         ?>
         <div class="section-holder">
             <?php
-            get_sidebar('file-a-complaint');
+            get_sidebar('settings');
             ?>
             <section class="right-content-section" id="right-content-section">
 
                 <div class="content-wrapper">
 
-                    <div><!-- <form> -->
+                    <form autocomplete="off" method="post" action="">
                             
                             <div id="saved-complaint">
                             <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
                                 <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none" />
                                 <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
                             </svg>
-                            <div class="message-text">Your complaint has been saved!</div>
+                            <div class="message-text">Saved!</div>
                         </div>
                         
                         <div id="form-complaint">
-                            <h1 class="form-heading">File a Complaint</h1>
+                            <h1 class="form-heading">General Settings</h1>
                             <div class="input-control">
-                                <label for="title">Problem</label>
-                                <input type="text" id="title" name="title" autocomplete="off" spellcheck="false" required aria-required="true">
+                                <label for="name">Full Name</label>
+                                <input type="text" id="name" name="name" autocomplete="off" spellcheck="false" required aria-required="true">
                             </div>
                             <div class="input-control">
-                                <label for="responsible-authority">Responsible Authority</label>
-                                <select id="responsible-authority">
-                                    <option value="none" selected disabled> </option>
-                                    <option value="Dean Academics">Dean Academics</option>
-                                    <option value="Examination Department">Examination Department</option>
-                                    <option value="Transportation Department">Transportation Department</option>
-                                </select>
+                                <label for="userid">User Id</label>
+                                <input type="text" id="userid" name="userid" autocomplete="off" spellcheck="false" required aria-required="true">
                             </div>
                             <div class="input-control">
-                                <label for="priority">Priority</label>
-                                <select id="priority">
-                                    <option value="none" selected disabled> </option>
-                                    <option value="high">High</option>
-                                    <option value="medium">Medium</option>
-                                    <option value="low">Low</option>
-                                </select>
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" autocomplete="off" spellcheck="false" required aria-required="true">
                             </div>
                             <div class="input-control">
-                                <label for="description">Problem Description</label>
-                                <textarea></textarea>
+                                <label for="password">Password</label>
+                                <input type="password" id="password" name="password" autocomplete="off" spellcheck="false" required aria-required="true">
                             </div>
                             <div class="input-control">
-                                <label for="suggestions">Suggestions</label>
-                                <textarea></textarea>
-                            </div>
-                            <div class="input-control">
-                                <label for="file-input">Attachments</label>
-                                <input type="file" id="file-input" multiple>
+                                <label for="cpassword">Confirm Password</label>
+                                <input type="password" id="cpassword" name="cpassword" autocomplete="off" spellcheck="false" required aria-required="true">
                             </div>
                             <div class="input-control">
                                 <input type="submit" id="submit-btn" class="submit-btn" value="SEND" />
                             </div>
                         </div>
-                    </div>
+                    </form>
 
                 </div>
 
