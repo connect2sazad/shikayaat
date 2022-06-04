@@ -7,8 +7,34 @@
     <link rel="stylesheet" href="../styles/style001.css">
     <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
     <title>sign in - shikayaat — the digital complaint box</title>
+    <script src="../script/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#continue').on('click', function(event){
+                event.preventDefault();
+                var data = {
+                    'userid': $('#userid').val(),
+                    'password': $('#password').val()
+                };
+                $.ajax({
+                    url : "auth.php",
+                    method: "post",
+                    data: data,
+                    dataType: "text",
+                    success: function(strMessage){
+                        console.log(strMessage);
+                    }
+                });
+                // location.reload();
+            });
+        });
+    </script>
 </head>
 <body>
+
+    <?php
+        include_once "../assets/notifications.php";
+    ?>
 
     <div class="container">
         <div class="flex-box-wrapper">
@@ -57,7 +83,7 @@
                                     <input type="password" id="password" name="password" autocomplete="off" spellcheck="false" required aria-required="true">
                                 </div>
                                 <div class="input-control">
-                                    <input type="submit" class="submit-btn" value="CONTINUE" />
+                                    <input type="submit" class="submit-btn" id="continue" value="CONTINUE" />
                                 </div>
                             </div>
                         </div>

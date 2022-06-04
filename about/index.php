@@ -21,7 +21,7 @@ include_once "../assets/asset_manager.php";
         ?>
         <div class="section-holder">
             <?php
-            get_sidebar('support');
+            get_sidebar('about');
             ?>
             <section class="right-content-section" id="right-content-section">
 
