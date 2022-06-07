@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 07, 2022 at 05:53 AM
+-- Generation Time: Jun 07, 2022 at 09:16 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -40,6 +40,7 @@ CREATE TABLE `authorities` (
 --
 
 INSERT INTO `authorities` (`authid`, `name`, `typeid`, `email`, `password`) VALUES
+('default', 'Default', 'dean_academics', 'default', 'default'),
 ('prafulla_barik', 'Prafulla Barik', 'transport_dept', 'sazadahemad899@gmail.com', 'Sa@127.0.0.1');
 
 -- --------------------------------------------------------
@@ -49,7 +50,7 @@ INSERT INTO `authorities` (`authid`, `name`, `typeid`, `email`, `password`) VALU
 --
 
 CREATE TABLE `complaints` (
-  `refno` int(255) NOT NULL,
+  `refno` bigint(255) NOT NULL,
   `title` mediumtext NOT NULL,
   `authid` varchar(255) NOT NULL,
   `typeid` varchar(255) NOT NULL,
@@ -70,7 +71,14 @@ CREATE TABLE `complaints` (
 --
 
 INSERT INTO `complaints` (`refno`, `title`, `authid`, `typeid`, `userid`, `priority`, `description`, `suggestions`, `attachments`, `responses`, `reminders`, `date`, `status`, `resolve_date`) VALUES
-(3412, 'Unable to avail bus card though paid for it', '', 'transport_dept', 'connect2sazad', 'high', 'Low blood pressure (less than 90/60) is referred to as hypotension. A blood pressure reading is represented by two digits. The first and more important of the two measures systolic pressure, or the pressure in the arteries as the heart beats and fills them with blood. The second number represents diastolic pressure, or the pressure… \r\n', 'Low blood pressure (less than 90/60) is referred to as hypotension. A blood pressure reading is represented by two digits. The first and more important of the two measures systolic pressure, or the pressure in the arteries as the heart beats and fills them with blood. The second number represents diastolic pressure, or the pressure…\r\n', '[]', '[]', '[]', '2022-05-31 12:06:49', 'pending', '2022-05-31 12:06:49');
+(3412, 'Unable to avail bus card though paid for it', '', 'transport_dept', 'connect2sazad', 'high', 'dfsdfsdfsdLow fsdfsdfblood pressure (less than 90/60) is referred to as hypotension. A blood pressure reading is represented by two digits. The first and more important of the two measures systolic pressure, or the pressure in the arteries as the heart beats and fills them with blood. The second number represents diastolic pressure, or the pressure… \n', 'Low blood pressure (less than 90/60) is referred to as hypotension. A blood pressure reading is represented by two digits. The first and more important of the two measures systolic pressure, or the pressure in the arteries as the heart beats and fills them with blood. The second number represents diastolic pressure, or the pressure…\r\n', '[]', '[]', '[]', '2022-05-31 12:06:49', 'pending', '2022-05-31 12:06:49'),
+(3415, 'test-title 1', 'default', 'exam_dept', 'connect2sazad', 'low', 'desc1', 'suggestion1', '[]', '[]', '[]', '0000-00-00 00:00:00', 'pending', '0000-00-00 00:00:00'),
+(2147483647, 'sdasdf', 'default', 'dean_academics', 'connect2sazad', 'high', 'dfsdf', 'dfd', '[]', '[]', '[]', '0000-00-00 00:00:00', 'solved', '0000-00-00 00:00:00'),
+(5464651152, '  $title  ', 'default ', 'exam_dept', 'connect2sazad', 'low', '  $description  ', '  $suggestions  ', '[]', '[]', '[]', '0000-00-00 00:00:00', 'pending', '0000-00-00 00:00:00'),
+(70622081116, 'dhgfghfdg', 'default', 'exam_dept', 'connect2sazad', 'medium', 'fdhdfhdf', 'fhfdhfdhf', '[]', '[]', '[]', '0000-00-00 00:00:00', 'pending', '0000-00-00 00:00:00'),
+(70622090810, 'asdasdas', 'default', 'exam_dept', 'connect2sazad', 'low', 'fsdsdf', 'sdfsdf', '[]', '[]', '[]', '0000-00-00 00:00:00', 'pending', '0000-00-00 00:00:00'),
+(70622090845, 'dasad', 'default', 'dean_academics', 'connect2sazad', 'low', 'fsdfsdf', 'dfsdf', '[]', '[]', '[]', '0000-00-00 00:00:00', 'pending', '0000-00-00 00:00:00'),
+(70622091817, 'sdfsdfsd', 'default', 'transport_dept', 'connect2sazad', 'medium', 'dsfsdfsdf', 'dfsdfsd', '[]', '[]', '[]', '0000-00-00 00:00:00', 'pending', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -90,7 +98,8 @@ CREATE TABLE `options` (
 
 INSERT INTO `options` (`option_id`, `option_name`, `option_value`) VALUES
 (1, 'site_url', 'http://127.0.0.1/shikayaat/'),
-(2, 'home', 'http://127.0.0.1/shikayaat/');
+(2, 'home', 'http://127.0.0.1/shikayaat/'),
+(3, 'authority_home', 'http://127.0.0.1/shikayaat/authorities/');
 
 -- --------------------------------------------------------
 
@@ -100,7 +109,8 @@ INSERT INTO `options` (`option_id`, `option_name`, `option_value`) VALUES
 
 CREATE TABLE `priorities` (
   `priorityid` varchar(20) NOT NULL,
-  `prioririty_name` varchar(20) NOT NULL,
+  `priority_name` varchar(20) NOT NULL,
+  `is_priority` tinyint(1) NOT NULL,
   `color` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -108,11 +118,12 @@ CREATE TABLE `priorities` (
 -- Dumping data for table `priorities`
 --
 
-INSERT INTO `priorities` (`priorityid`, `prioririty_name`, `color`) VALUES
-('high', 'High', 'red'),
-('low', 'Low', 'white'),
-('medium', 'Medium', 'yellow'),
-('solved', 'Solved', '#dddddd');
+INSERT INTO `priorities` (`priorityid`, `priority_name`, `is_priority`, `color`) VALUES
+('high', 'High', 1, 'red'),
+('low', 'Low', 1, 'white'),
+('medium', 'Medium', 1, 'yellow'),
+('pending', 'Pending', 0, 'c04848'),
+('solved', 'Solved', 0, 'dddddd');
 
 -- --------------------------------------------------------
 
@@ -122,14 +133,16 @@ INSERT INTO `priorities` (`priorityid`, `prioririty_name`, `color`) VALUES
 
 CREATE TABLE `types` (
   `typeid` varchar(255) NOT NULL,
-  `name` varchar(255) NOT NULL
+  `authority_type_name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `types`
 --
 
-INSERT INTO `types` (`typeid`, `name`) VALUES
+INSERT INTO `types` (`typeid`, `authority_type_name`) VALUES
+('admission_dept', 'Admission Section'),
+('dean_academics', 'Dean Academics'),
 ('exam_dept', 'Examination Department'),
 ('transport_dept', 'Transportation Department');
 
@@ -207,13 +220,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `complaints`
 --
 ALTER TABLE `complaints`
-  MODIFY `refno` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3413;
+  MODIFY `refno` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70622091818;
 
 --
 -- AUTO_INCREMENT for table `options`
 --
 ALTER TABLE `options`
-  MODIFY `option_id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `option_id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
