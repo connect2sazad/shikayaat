@@ -1,20 +1,18 @@
 <?php
 
-    session_start();
+    include_once "./api.php";
 
-    include_once "../assets/config.php";
-
-    $userid = isset($_POST['userid']) ? $_POST['userid'] : '';
+    $authid = isset($_POST['authid']) ? $_POST['authid'] : '';
     $password = isset($_POST['password']) ? $_POST['password'] : '';
     
-    $query = "SELECT * FROM users WHERE `userid` = '".$userid."';";
+    $query = "SELECT * FROM authorities WHERE `authid` = '".$authid."';";
     $run_query = mysqli_query($conn, $query);
 
     if(!mysqli_num_rows($run_query)){
         $arr = array(
             "status" => "0",
-            "response" => "NO_USER_FOUND",
-            "message" => "No such user found!"
+            "response" => "NO_AUTHORITY_FOUND",
+            "message" => "No such authority found!"
         );
         echo json_encode($arr);
         die();
@@ -28,14 +26,14 @@
         $arr['message'] = "Login successful!";
 
         // set session variable
-        $_SESSION['shikayat_userid'] = $userid;
+        $_SESSION['shikayat_authorityid'] = $authid;
 
         echo json_encode($arr);
     } else {
         $arr = array(
             "status" => "0",
             "response" => "INCORRECT_CREDS",
-            "message" => "Your username or password is incorrect!"
+            "message" => "Your authority username or password is incorrect!"
         );
         echo json_encode($arr);
     }

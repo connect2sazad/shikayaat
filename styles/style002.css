@@ -258,20 +258,24 @@
     color: var(--primary-color);
 }
 
-.red-color{
+.color-red{
     background-color: red;
 }
 
-.yellow-color{
+.color-yellow{
     background-color: yellow;
 }
 
-.white-color{
+.color-white{
     background-color: var(--primary-color);
 }
 
-.dddddd-color{
+.color-dddddd{
     background-color: #dddddd;
+}
+
+.color-c04848{
+    background-color: #c04848;
 }
 
 .texts-holder{

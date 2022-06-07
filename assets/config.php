@@ -19,3 +19,13 @@
         echo "Error in connection - ".mysqli_error($conn); // error message if host is not connected
 
     }
+
+    $query__url = "SELECT * FROM options WHERE `option_name` = 'site_url'";
+    $run_query_url = mysqli_query($conn, $query__url);
+    $url = mysqli_fetch_assoc($run_query_url);
+
+    if(!defined('SITE_URL'))
+        define('SITE_URL', $url['option_value']);
+    
+    if(!defined('APP_KEY_ID'))
+        define('APP_KEY_ID', 'e44d7c13-e9c6-46d6-9b1d-ea0bc946aa72');
