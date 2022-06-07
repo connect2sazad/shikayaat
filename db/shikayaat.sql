@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 31, 2022 at 09:46 PM
+-- Generation Time: Jun 07, 2022 at 05:53 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -52,6 +52,7 @@ CREATE TABLE `complaints` (
   `refno` int(255) NOT NULL,
   `title` mediumtext NOT NULL,
   `authid` varchar(255) NOT NULL,
+  `typeid` varchar(255) NOT NULL,
   `userid` varchar(255) NOT NULL,
   `priority` varchar(20) NOT NULL,
   `description` longtext NOT NULL,
@@ -68,8 +69,28 @@ CREATE TABLE `complaints` (
 -- Dumping data for table `complaints`
 --
 
-INSERT INTO `complaints` (`refno`, `title`, `authid`, `userid`, `priority`, `description`, `suggestions`, `attachments`, `responses`, `reminders`, `date`, `status`, `resolve_date`) VALUES
-(3412, 'Unable to avail bus card though paid for it', 'prafulla_barik', 'connect2sazad', 'high', 'Low blood pressure (less than 90/60) is referred to as hypotension. A blood pressure reading is represented by two digits. The first and more important of the two measures systolic pressure, or the pressure in the arteries as the heart beats and fills them with blood. The second number represents diastolic pressure, or the pressure…\r\n', 'Low blood pressure (less than 90/60) is referred to as hypotension. A blood pressure reading is represented by two digits. The first and more important of the two measures systolic pressure, or the pressure in the arteries as the heart beats and fills them with blood. The second number represents diastolic pressure, or the pressure…\r\n', '[]', '[]', '[]', '2022-05-31 12:06:49', 'pending', '2022-05-31 12:06:49');
+INSERT INTO `complaints` (`refno`, `title`, `authid`, `typeid`, `userid`, `priority`, `description`, `suggestions`, `attachments`, `responses`, `reminders`, `date`, `status`, `resolve_date`) VALUES
+(3412, 'Unable to avail bus card though paid for it', '', 'transport_dept', 'connect2sazad', 'high', 'Low blood pressure (less than 90/60) is referred to as hypotension. A blood pressure reading is represented by two digits. The first and more important of the two measures systolic pressure, or the pressure in the arteries as the heart beats and fills them with blood. The second number represents diastolic pressure, or the pressure… \r\n', 'Low blood pressure (less than 90/60) is referred to as hypotension. A blood pressure reading is represented by two digits. The first and more important of the two measures systolic pressure, or the pressure in the arteries as the heart beats and fills them with blood. The second number represents diastolic pressure, or the pressure…\r\n', '[]', '[]', '[]', '2022-05-31 12:06:49', 'pending', '2022-05-31 12:06:49');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `options`
+--
+
+CREATE TABLE `options` (
+  `option_id` int(20) UNSIGNED NOT NULL,
+  `option_name` varchar(191) NOT NULL,
+  `option_value` longtext NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `options`
+--
+
+INSERT INTO `options` (`option_id`, `option_name`, `option_value`) VALUES
+(1, 'site_url', 'http://127.0.0.1/shikayaat/'),
+(2, 'home', 'http://127.0.0.1/shikayaat/');
 
 -- --------------------------------------------------------
 
@@ -150,7 +171,15 @@ ALTER TABLE `complaints`
   ADD PRIMARY KEY (`refno`),
   ADD KEY `authid` (`authid`),
   ADD KEY `userid` (`userid`),
-  ADD KEY `priority` (`priority`);
+  ADD KEY `priority` (`priority`),
+  ADD KEY `typeid` (`typeid`);
+
+--
+-- Indexes for table `options`
+--
+ALTER TABLE `options`
+  ADD PRIMARY KEY (`option_id`),
+  ADD UNIQUE KEY `option_name` (`option_name`);
 
 --
 -- Indexes for table `priorities`
@@ -181,6 +210,12 @@ ALTER TABLE `complaints`
   MODIFY `refno` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3413;
 
 --
+-- AUTO_INCREMENT for table `options`
+--
+ALTER TABLE `options`
+  MODIFY `option_id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- Constraints for dumped tables
 --
 
@@ -196,7 +231,8 @@ ALTER TABLE `authorities`
 ALTER TABLE `complaints`
   ADD CONSTRAINT `complaints_ibfk_1` FOREIGN KEY (`authid`) REFERENCES `authorities` (`authid`),
   ADD CONSTRAINT `complaints_ibfk_2` FOREIGN KEY (`userid`) REFERENCES `users` (`userid`),
-  ADD CONSTRAINT `complaints_ibfk_3` FOREIGN KEY (`priority`) REFERENCES `priorities` (`priorityid`);
+  ADD CONSTRAINT `complaints_ibfk_3` FOREIGN KEY (`priority`) REFERENCES `priorities` (`priorityid`),
+  ADD CONSTRAINT `complaints_ibfk_4` FOREIGN KEY (`typeid`) REFERENCES `types` (`typeid`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

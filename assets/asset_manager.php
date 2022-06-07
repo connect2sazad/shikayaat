@@ -1,5 +1,6 @@
 <?php
-    function get_sidebar($selected_menu = 'home'){
+
+    function get_sidebar($selected_menu = 'home', $loc){
 
         $icons = array(
             'home' => '<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024"
@@ -53,13 +54,13 @@
         );
 
         echo '<section class="left-nav-section" id="left-nav-section"><ul>';
-        echo sidebar_menu_item('Dashboard', '', $icons['home'], $selected_menu=='home');
-        echo sidebar_menu_item('File a Complaint', 'file-a-complaint', $icons['file-a-complaint'], $selected_menu=='file-a-complaint');
-        echo sidebar_menu_item('All Complaints', 'all-complaints', $icons['all-complaints'], $selected_menu=='all-complaints');
-        echo sidebar_menu_item('Search Complaint', 'search-complaint', $icons['search-complaint'], $selected_menu=='search-complaint');
-        echo sidebar_menu_item('Settings', 'settings', $icons['settings'], $selected_menu=='settings');
-        echo sidebar_menu_item('Support', 'support', $icons['support'], $selected_menu=='support');
-        echo sidebar_menu_item('Logout', 'logout', $icons['logout'], $selected_menu=='logout');
+        echo sidebar_menu_item('Dashboard', $loc, $icons['home'], $selected_menu=='home');
+        echo sidebar_menu_item('File a Complaint', $loc.'file-a-complaint', $icons['file-a-complaint'], $selected_menu=='file-a-complaint');
+        echo sidebar_menu_item('All Complaints', $loc.'all-complaints', $icons['all-complaints'], $selected_menu=='all-complaints');
+        echo sidebar_menu_item('Search Complaint', $loc.'search-complaint', $icons['search-complaint'], $selected_menu=='search-complaint');
+        echo sidebar_menu_item('Settings', $loc.'settings', $icons['settings'], $selected_menu=='settings');
+        echo sidebar_menu_item('Support', $loc.'support', $icons['support'], $selected_menu=='support');
+        echo sidebar_menu_item('Logout', $loc.'logout', $icons['logout'], $selected_menu=='logout');
         echo '<a href="#collapse_expand" id="collapse_expand">
                 <li>
                     <div class="menu-item-icon" id="collapse-icon">
@@ -74,7 +75,7 @@
     }
 
     function sidebar_menu_item($menu_name, $link, $icon, $current_menu=false){
-        $menu_link = 'href="./'.$link.'" ';
+        $menu_link = 'href="'.$link.'" ';
         $current_menu_attr =  $current_menu ? 'class="current-menu"' : '';
         $menu_item = '
             <a '.$menu_link.$current_menu_attr.'>
@@ -104,12 +105,12 @@
             </div>
             <div class="control-menu">
                 <ul class="control-menu-list">
-                    <li><a href="http://127.0.0.1/shikayaat/">home</a></li>
-                    <li><a href="./about">about</a></li>
-                    <li><a href="./sales">sales</a></li>
-                    <li><a href="./support">support</a></li>
-                    <li><a href="./settings">connect2sazad</a></li>
-                    <li>logout</li>
+                    <li><a href="'.$loc.'">home</a></li>
+                    <li><a href="'.$loc.'about">about</a></li>
+                    <li><a href="'.$loc.'sales">sales</a></li>
+                    <li><a href="'.$loc.'support">support</a></li>
+                    <li><a href="'.$loc.'settings">connect2sazad</a></li>
+                    <li><a href="'.$loc.'logout">logout</a></li>
                 </ul>
             </div>
         </header>';

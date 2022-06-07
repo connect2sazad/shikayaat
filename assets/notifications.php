@@ -1,10 +1,10 @@
 <div class="notification-container" id="notification-container">
     <div class="notification-icon-holder">
-        <div class="notification-icon">!</div>
+        <div class="notification-icon" id="notification-icon">!</div>
     </div>
     <div class="notification-content">
-        <div class="notification-title">Warning</div>
-        <div class="notification-message">Your username or password is incorrect!</div>
+        <div class="notification-title" id="notification-title">Warning</div>
+        <div class="notification-message" id="notification-message">Your username or password is incorrect!</div>
     </div>
     <div class="notification-close-holder">
         <div class="notification-close" id="notification-close">&times;</div>
