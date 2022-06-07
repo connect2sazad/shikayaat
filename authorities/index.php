@@ -1,7 +1,7 @@
 <?php
-    include_once "./assets/asset_manager.php";
+    include_once "../assets/asset_manager.php";
+    include_once "../assets/config.php";
     include_once "./assets/secure-home.php";
-    include_once "./assets/config.php";
 
     $query = "SELECT * FROM options WHERE `option_name` = 'site_url'";
     $run_query = mysqli_query($conn, $query);

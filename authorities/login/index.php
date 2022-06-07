@@ -1,18 +1,13 @@
 <?php
 session_start();
-include_once "../assets/config.php";
+include_once "../../assets/config.php";
 
-$query = "SELECT * FROM options WHERE `option_name` = 'home'";
+$query = "SELECT * FROM options WHERE `option_name` = 'authority_home'";
 $run_query = mysqli_query($conn, $query);
 $fetch = mysqli_fetch_assoc($run_query);
 $home = $fetch['option_value'];
 
-$query = "SELECT * FROM options WHERE `option_name` = 'site_url'";
-$run_query = mysqli_query($conn, $query);
-$fetch = mysqli_fetch_assoc($run_query);
-$site_url = $fetch['option_value'];
-
-if (isset($_SESSION['shikayat_userid'])) {
+if (isset($_SESSION['shikayat_authorityid'])) {
     header('Location: '.$home);
 }
 
@@ -24,21 +19,26 @@ if (isset($_SESSION['shikayat_userid'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="<?=$site_url?>styles/style001.css">
-    <link rel="shortcut icon" href="<?=$site_url?>images/favicon.ico" type="image/x-icon">
-    <title>sign in - shikayaat — the digital complaint box</title>
-    <script src="<?=$site_url?>script/jquery-3.6.0.min.js"></script>
+    <link rel="shortcut icon" href="<?=SITE_URL?>images/favicon.ico" type="image/x-icon">
+    <title>authority sign in - shikayaat — the digital complaint box</title>
+    <link rel="stylesheet" href="<?=SITE_URL?>styles/style001.css">
+    <style>
+        .bgcolor-violet{
+            background-color: violet;
+        }
+    </style>
+    <script src="<?=SITE_URL?>script/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
             $('#continue').on('click', function(event) {
                 event.preventDefault();
                 var data = {
                     'app_key_id': '<?=APP_KEY_ID?>',
-                    'userid': $('#userid').val(),
+                    'authid': $('#authid').val(),
                     'password': $('#password').val()
                 };
                 $.ajax({
-                    url: "<?=$site_url?>apis/login-auth.php",
+                    url: "<?=SITE_URL?>apis/authorities-login-auth.php",
                     method: "post",
                     data: data,
                     dataType: "text",
@@ -72,7 +72,7 @@ if (isset($_SESSION['shikayat_userid'])) {
 <body>
 
     <?php
-    include_once "../assets/notifications.php";
+    include_once "../../assets/notifications.php";
     ?>
 
     <div class="container">
@@ -86,7 +86,7 @@ if (isset($_SESSION['shikayat_userid'])) {
                                     <div class="form-logo-container" id="form-logo-container">
                                         <div class="logo-img">
                                             <div class="img-holder">
-                                                <img src="../images/logo.png" alt="Logo">
+                                                <img src="<?=SITE_URL?>images/logo.png" alt="Logo">
                                             </div>
                                         </div>
                                         <div class="project-title">
@@ -100,8 +100,7 @@ if (isset($_SESSION['shikayat_userid'])) {
                                             welcome
                                         </div>
                                         <div class="message-text">
-                                            Sign in <br />
-                                            to continue access
+                                            Authorities Center
                                         </div>
                                     </div>
                                 </div>
@@ -110,17 +109,17 @@ if (isset($_SESSION['shikayat_userid'])) {
                         </div>
                     </div>
                     <div class="column-50">
-                        <div class="form-container">
+                        <div class="form-container bgcolor-violet">
                             <div class="form-heading">Sign In</div>
                             <div>
                                 <!-- <form> -->
                                 <div class="input-control">
-                                    <label for="userid">User Id</label>
-                                    <input type="text" id="userid" name="userid" autocomplete="off" spellcheck="false" required aria-required="true">
+                                    <label for="authid">Authorization Id</label>
+                                    <input class="bgcolor-violet" type="text" id="authid" name="authid" autocomplete="off" spellcheck="false" required aria-required="true">
                                 </div>
                                 <div class="input-control">
                                     <label for="password">Password</label>
-                                    <input type="password" id="password" name="password" autocomplete="off" spellcheck="false" required aria-required="true">
+                                    <input class="bgcolor-violet" type="password" id="password" name="password" autocomplete="off" spellcheck="false" required aria-required="true">
                                 </div>
                                 <div class="input-control">
                                     <input type="submit" class="submit-btn" id="continue" value="CONTINUE" />
