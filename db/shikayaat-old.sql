@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 06, 2022 at 08:55 AM
+-- Generation Time: Jun 07, 2022 at 09:16 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -78,8 +78,7 @@ INSERT INTO `complaints` (`refno`, `title`, `authid`, `typeid`, `userid`, `prior
 (70622081116, 'dhgfghfdg', 'default', 'exam_dept', 'connect2sazad', 'medium', 'fdhdfhdf', 'fhfdhfdhf', '[]', '[]', '[]', '0000-00-00 00:00:00', 'pending', '0000-00-00 00:00:00'),
 (70622090810, 'asdasdas', 'default', 'exam_dept', 'connect2sazad', 'low', 'fsdsdf', 'sdfsdf', '[]', '[]', '[]', '0000-00-00 00:00:00', 'pending', '0000-00-00 00:00:00'),
 (70622090845, 'dasad', 'default', 'dean_academics', 'connect2sazad', 'low', 'fsdfsdf', 'dfsdf', '[]', '[]', '[]', '0000-00-00 00:00:00', 'pending', '0000-00-00 00:00:00'),
-(70622091817, 'sdfsdfsd', 'default', 'transport_dept', 'connect2sazad', 'medium', 'dsfsdfsdf', 'dfsdfsd', '[]', '[]', '[]', '0000-00-00 00:00:00', 'pending', '0000-00-00 00:00:00'),
-(130622081736, 'No gap between examination papers', 'default', 'exam_dept', 'connect2sazad', 'high', 'The examination schedule of 5th semester has no gaps between consecutive papers. The syllabus is huge to complete it without at least one day gap. Most of the papers are mathematical has needs a lot of practice. I know we had got a lot of time to do the same. But the last minute preparations are the most effective and are most important.', 'Therefore I suggest you to revise the given examination schedule and consider at least one day between two examination papers. Looking forward for your response.', '[]', '[]', '[]', '0000-00-00 00:00:00', 'pending', '0000-00-00 00:00:00');
+(70622091817, 'sdfsdfsd', 'default', 'transport_dept', 'connect2sazad', 'medium', 'dsfsdfsdf', 'dfsdfsd', '[]', '[]', '[]', '0000-00-00 00:00:00', 'pending', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -221,7 +220,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `complaints`
 --
 ALTER TABLE `complaints`
-  MODIFY `refno` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=130622081737;
+  MODIFY `refno` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70622091818;
 
 --
 -- AUTO_INCREMENT for table `options`

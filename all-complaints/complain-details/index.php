@@ -4,6 +4,8 @@ include_once "../../assets/secure.php";
 include_once "../../assets/config.php";
 
 $refno = isset($_GET['refno']) ? $_GET['refno'] : '';
+$refno = str_replace('#', '', $refno);
+$refno = str_replace('#0', '', $refno);
 
 $query = "SELECT * FROM ((`complaints` INNER JOIN `priorities` ON complaints.priority = priorities.priorityid) INNER JOIN `types` ON complaints.typeid = types.typeid) WHERE complaints.refno=".$refno.";";
 $run_query = mysqli_query($conn, $query);
