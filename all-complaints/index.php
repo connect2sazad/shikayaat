@@ -37,53 +37,55 @@ $run_query_complaints = mysqli_query($conn, $query_complaints);
             ?>
             <section class="right-content-section" id="right-content-section">
                 <div class="content-wrapper">
-                    <h1 class="form-heading">All Complaints</h1>
-                    <div class="colors-meaning">
-                        <?php
-                        if (mysqli_num_rows($run_query_priorities) > 0) {
-                            while ($row = mysqli_fetch_assoc($run_query_priorities)) {
-                                // echo ' <option value="' . $row['priorityid'] . '">' . $row['prioririty_name'] . ' - ' . $row['color'] . '</option>';
-                                echo '<div class="color-indentity-holder">';
-                                echo '<div class="color-box color-' . $row['color'] . '"></div>';
-                                if ($row['is_priority'])
-                                    echo '<div class="color-meaning">' . $row['priority_name'] . ' Priority</div>';
-                                else
-                                    echo '<div class="color-meaning">' . $row['priority_name'] . '</div>';
-                                echo '</div>';
-                            }
-                        }
-                        ?>
-                    </div>
-                    <table class="styled-table">
-                        <thead>
-                            <tr>
-                                <th>Ticket No</th>
-                                <th>Problem</th>
-                                <th>Responsible</th>
-                                <th>Priority</th>
-                                <th>Date</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
+                    <div class="card">
+                        <h1 class="form-heading">All Complaints</h1>
+                        <div class="colors-meaning">
                             <?php
-
-                            if (mysqli_num_rows($run_query_complaints) > 0) {
-                                while ($row = mysqli_fetch_assoc($run_query_complaints)) {
-                                    echo '<tr class="'.$row['priority'].' '.$row['status'].'">';
-                                    echo '<td>#'.$row['refno'].'</td>';
-                                    echo '<td><a href="./complain-details?refno='.$row['refno'].'">'.$row['title'].'</a></td>';
-                                    echo '<td>'.$row['authority_type_name'].'</td>';
-                                    echo '<td>'.$row['priority_name'].'</td>';
-                                    echo '<td>'.$row['date'].'</td>';
-                                    echo '<td>'.$row['status'].'</td>';
-                                    echo '</tr>';
+                            if (mysqli_num_rows($run_query_priorities) > 0) {
+                                while ($row = mysqli_fetch_assoc($run_query_priorities)) {
+                                    // echo ' <option value="' . $row['priorityid'] . '">' . $row['prioririty_name'] . ' - ' . $row['color'] . '</option>';
+                                    echo '<div class="color-indentity-holder">';
+                                    echo '<div class="color-box color-' . $row['color'] . '"></div>';
+                                    if ($row['is_priority'])
+                                        echo '<div class="color-meaning">' . $row['priority_name'] . ' Priority</div>';
+                                    else
+                                        echo '<div class="color-meaning">' . $row['priority_name'] . '</div>';
+                                    echo '</div>';
                                 }
                             }
                             ?>
+                        </div>
+                        <table class="styled-table">
+                            <thead>
+                                <tr>
+                                    <th>Ticket No</th>
+                                    <th>Problem</th>
+                                    <th>Responsible</th>
+                                    <th>Priority</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
 
-                        </tbody>
-                    </table>
+                                if (mysqli_num_rows($run_query_complaints) > 0) {
+                                    while ($row = mysqli_fetch_assoc($run_query_complaints)) {
+                                        echo '<tr class="' . $row['priority'] . ' ' . $row['status'] . '">';
+                                        echo '<td>#' . $row['refno'] . '</td>';
+                                        echo '<td><a href="./complain-details?refno=' . $row['refno'] . '">' . $row['title'] . '</a></td>';
+                                        echo '<td>' . $row['authority_type_name'] . '</td>';
+                                        echo '<td>' . $row['priority_name'] . '</td>';
+                                        echo '<td>' . $row['date'] . '</td>';
+                                        echo '<td>' . $row['status'] . '</td>';
+                                        echo '</tr>';
+                                    }
+                                }
+                                ?>
+
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </section>
         </div>

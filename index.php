@@ -18,6 +18,7 @@
     <title>shikayaat — the digital complaint box</title>
     <link rel="stylesheet" href="<?=$fetch['option_value']?>styles/style002.css">
     <link rel="stylesheet" href="<?=$fetch['option_value']?>fonts/fontawesome6/css/fontawesome.css">
+
     
 </head>
 
@@ -29,18 +30,20 @@
         <div class="section-holder">
             <?php
                 get_sidebar('home', $fetch['option_value']);
-            ?>
+                ?>
             <section class="right-content-section" id="right-content-section">
                 <br><br><br><br><br><br>
-               dsfsd
-               <?php
+                dsfsd
+                <?php
             print_r($fetch['option_value']);
-        ?>
+            ?>
             </section>
         </div>
     </main>
-
+    
     <!-- scripts -->
+    <script src="<?=$fetch['option_value']?>script/jquery-3.6.0.min.js"></script>
+    <!-- <script src="< ?=$fetch['option_value']?>script/page-loaded-menu.js"></script> -->
     <script src="<?=$fetch['option_value']?>script/base.js"></script>
     <!-- scripts -->
 

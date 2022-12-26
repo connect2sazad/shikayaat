@@ -7,7 +7,7 @@ $refno = isset($_GET['refno']) ? $_GET['refno'] : '';
 $refno = str_replace('#', '', $refno);
 $refno = str_replace('#0', '', $refno);
 
-$query = "SELECT * FROM ((`complaints` INNER JOIN `priorities` ON complaints.priority = priorities.priorityid) INNER JOIN `types` ON complaints.typeid = types.typeid) WHERE complaints.refno=".$refno.";";
+$query = "SELECT * FROM ((`complaints` INNER JOIN `priorities` ON complaints.priority = priorities.priorityid) INNER JOIN `types` ON complaints.typeid = types.typeid) WHERE complaints.refno=" . $refno . ";";
 $run_query = mysqli_query($conn, $query);
 $fetch = mysqli_fetch_assoc($run_query);
 ?>
@@ -34,39 +34,41 @@ $fetch = mysqli_fetch_assoc($run_query);
             ?>
             <section class="right-content-section" id="right-content-section">
                 <div class="content-wrapper">
-                    <div id="form-complaint">
-                        <h1 class="form-heading">Complain Details</h1>
-                        <div class="input-control">
-                            <label for="ticket-no">Ticket No</label>
-                            <input type="text" id="ticket-no" name="ticket-no" autocomplete="off" value="#<?= $fetch['refno'] ?>" spellcheck="false" readonly>
-                        </div>
-                        <div class="input-control">
-                            <label for="time">Time</label>
-                            <input type="text" id="time" name="time" autocomplete="off" value="<?= $fetch['date'] ?>" spellcheck="false" readonly>
-                        </div>
-                        <div class="input-control">
-                            <label for="title">Problem</label>
-                            <input type="text" id="title" name="title" autocomplete="off" spellcheck="false" value="<?= $fetch['title'] ?>" readonly>
-                        </div>
-                        <div class="input-control">
-                            <label for="responsible-authority">Responsible Authority</label>
-                            <input type="text" id="authority" name="authority" autocomplete="off" spellcheck="false" value="<?= $fetch['authority_type_name'] ?>" readonly>
-                        </div>
-                        <div class="input-control">
-                            <label for="priority">Priority</label>
-                            <input type="text" id="priority" name="priority" autocomplete="off" spellcheck="false" value="<?= $fetch['priority_name'] ?>" readonly>
-                        </div>
-                        <div class="input-control">
-                            <label for="description">Problem Description</label>
-                            <div class="textarea-resembler"><?= $fetch['description'] ?></div>
-                        </div>
-                        <div class="input-control">
-                            <label for="suggestions">Suggestions</label>
-                            <div class="textarea-resembler"><?= $fetch['suggestions'] ?></div>
-                        </div>
-                        <div class="input-control">
-                            <label for="file-input">Attachments</label>
-                            <input type="file" id="file-input" disabled multiple>
+                    <div class="card">
+                        <div id="form-complaint">
+                            <h1 class="form-heading">Complain Details</h1>
+                            <div class="input-control">
+                                <label for="ticket-no">Ticket No</label>
+                                <input type="text" id="ticket-no" name="ticket-no" autocomplete="off" value="#<?= $fetch['refno'] ?>" spellcheck="false" readonly>
+                            </div>
+                            <div class="input-control">
+                                <label for="time">Time</label>
+                                <input type="text" id="time" name="time" autocomplete="off" value="<?= $fetch['date'] ?>" spellcheck="false" readonly>
+                            </div>
+                            <div class="input-control">
+                                <label for="title">Problem</label>
+                                <input type="text" id="title" name="title" autocomplete="off" spellcheck="false" value="<?= $fetch['title'] ?>" readonly>
+                            </div>
+                            <div class="input-control">
+                                <label for="responsible-authority">Responsible Authority</label>
+                                <input type="text" id="authority" name="authority" autocomplete="off" spellcheck="false" value="<?= $fetch['authority_type_name'] ?>" readonly>
+                            </div>
+                            <div class="input-control">
+                                <label for="priority">Priority</label>
+                                <input type="text" id="priority" name="priority" autocomplete="off" spellcheck="false" value="<?= $fetch['priority_name'] ?>" readonly>
+                            </div>
+                            <div class="input-control">
+                                <label for="description">Problem Description</label>
+                                <div class="textarea-resembler"><?= $fetch['description'] ?></div>
+                            </div>
+                            <div class="input-control">
+                                <label for="suggestions">Suggestions</label>
+                                <div class="textarea-resembler"><?= $fetch['suggestions'] ?></div>
+                            </div>
+                            <div class="input-control">
+                                <label for="file-input">Attachments</label>
+                                <input type="file" id="file-input" disabled multiple>
+                            </div>
                         </div>
                     </div>
                 </div>

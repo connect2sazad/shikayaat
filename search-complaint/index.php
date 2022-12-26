@@ -29,6 +29,7 @@ $run_query_priorities = mysqli_query($conn, $query_priorities);
             ?>
             <section class="right-content-section" id="right-content-section">
                 <div class="content-wrapper">
+                    <div class="card">
                     <h1 class="form-heading">Search for a Complaint</h1>
                     <div>
                         <div class="input-control">
@@ -90,6 +91,7 @@ $run_query_priorities = mysqli_query($conn, $query_priorities);
                             </tr>
                         </tbody>
                     </table>
+                    </div>
                 </div>
             </section>
         </div>

@@ -12,13 +12,15 @@ collapse_expand_btn.addEventListener('click', () => {
 
     if (menu_item_name[0].style.display == 'none') {
 
-        right_nav_section.style.width = "80%";
-        left_nav_section.style.width = "20%";
+        right_nav_section.style.width = "85%";
+        left_nav_section.style.width = "15%";
         for (var i = 0; i < menu_item_name.length; i++) {
             menu_item_name[i].style.display = "block";
         }
 
         collapse_icon.innerHTML = left_arrow;
+
+        localStorage.setItem('nav-style', 'expanded');
 
     } else {
 
@@ -34,6 +36,31 @@ collapse_expand_btn.addEventListener('click', () => {
 
         collapse_icon.innerHTML = right_arrow;
 
+        localStorage.setItem('nav-style', 'collapsed');
+
     }
 
 });
+
+
+
+// set menu style on page load -  collapsed or expanded
+var menu_item_name = document.getElementsByClassName('menu-item-name');
+var nav_style = localStorage.getItem('nav-style') || localStorage.setItem('nav-style', 'expanded');
+if (nav_style == 'collapsed') {
+
+
+    for (var i = 0; i < menu_item_name.length; i++) {
+        menu_item_name[i].style.display = "none";
+    }
+
+    left_nav_section.style.width = "max-content";
+
+    var left_nav_section_current_width = left_nav_section.offsetWidth;
+
+    right_nav_section.style.width = "calc(100% - " + left_nav_section_current_width + "px)";
+
+    collapse_icon.innerHTML = right_arrow;
+
+    localStorage.setItem('nav-style', 'collapsed');
+}

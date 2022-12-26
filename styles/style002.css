@@ -32,7 +32,7 @@
 .content-wrapper .input-control select,
 .content-wrapper .input-control textarea,
 .content-wrapper .input-control input[type="text"] {
-    color: var(--primary-color);
+    color: var(--black);
 }
 
 .content-wrapper .input-control textarea {
@@ -149,6 +149,7 @@
     min-width: 400px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
     border-bottom: 2px solid var(--section-border-color);
+    width: 100%;
 }
 .styled-table thead tr {
     background-color: var(--section-border-color);
@@ -255,7 +256,7 @@
     justify-content: center;
     align-items: center;
     margin-left: 10px;
-    color: var(--primary-color);
+    color: var(--black);
 }
 
 .color-red{
@@ -283,7 +284,7 @@
     height: auto;
     display: flex;
     flex-direction: column;
-    color: var(--primary-color);
+    color: var(--black);
 }
 
 .font-size-25{
@@ -296,7 +297,7 @@
 
 .texts-holder a{
     text-decoration: none;
-    color: var(--primary-color);
+    /* color: var(--primary-color); */
 }
 
 .texts-holder a:hover{

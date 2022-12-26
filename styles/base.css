@@ -17,11 +17,11 @@ body {
 }
 
 body {
-    background: var(--body-bg);
+    /* background: var(--body-bg);
     background: var(--body-moz-bg);
     background: var(--body-webkit-bg);
     background: var(--body-gradient-bg);
-    filter: var(--body-filter);
+    filter: var(--body-filter); */
 }
 
 main {
@@ -33,11 +33,11 @@ main {
     flex-direction: column;
 }
 
-.set-logo-font{
+.set-logo-font {
     font-family: 'Strawberry Bubble Gum';
 }
 
-::-webkit-scrollbar{
+::-webkit-scrollbar {
     width: 1px;
 }
 
@@ -144,21 +144,23 @@ main {
 .input-control input,
 .input-control select,
 .input-control textarea,
-.textarea-resembler{
+.textarea-resembler {
     height: auto;
     width: calc(100% - 20px);
     padding: 10px;
     font-size: 20px;
-    border: 0;
-    border-bottom: 2px solid var(--form-input-border);
+    /* border: 0; */
+    /* border-bottom: 2px solid var(--form-input-border);
     border-bottom-color: #a8c0ff;
     border-bottom-color: -webkit-linear-gradient(to right, #3f2b96, #a8c0ff);
-    border-bottom-color: linear-gradient(to right, #3f2b96, #a8c0ff);
+    border-bottom-color: linear-gradient(to right, #3f2b96, #a8c0ff); */
+    border: .2px solid var(--form-input-border);
     outline: none;
     font-family: Calibri, 'Trebuchet MS', sans-serif;
+    border-radius: 8px;
 }
 
-.textarea-resembler{
+.textarea-resembler {
     color: var(--primary-color);
 }
 
@@ -170,31 +172,28 @@ main {
     outline: none;
 }
 
-.input-control input[type=submit] {
+.input-control input[type=submit], button {
     margin-top: 20px;
-    width: 100%;
+    width: max-content;
+    padding: 10px 30px;
     cursor: pointer;
     background: var(--primary-button-color);
     color: var(--primary-color);
+    border-bottom: 2px solid rgb(165, 148, 148);
     font-weight: 500;
     transition: 1s;
 }
 
 .input-control input[type=submit]:hover {
     background: var(--primary-button-color-hover);
-    ;
 }
 
 .input-control input[type="file"]::-webkit-file-upload-button {
     display: none;
 }
 
-.input-control input[type="file"]{
-    color: var(--primary-color);
-}
-
-.form-heading{
-    color: var(--primary-color);
+.form-heading {
+    color: var(--black);
     font-size: 30px;
 }
 
@@ -253,7 +252,7 @@ ul.control-menu-list li:hover,
     text-decoration: underline;
 }
 
-ul.control-menu-list li a{
+ul.control-menu-list li a {
     color: var(--primary-color);
     text-decoration: none;
 }
@@ -284,10 +283,12 @@ ul.control-menu-list li a{
 /* LEFT NAV Start */
 
 .left-nav-section {
-    width: 20%;
+    width: 15%;
     height: 100%;
-    border-right: 2px solid var(--section-border-color);
-    background-color: var(--left-nav-bg);
+    border-right: 1px solid var(--section-border-color);
+    border-top: 1px solid var(--section-border-color);
+    /* background-color: var(--left-nav-bg); */
+    background-color: var(--header-bg);
 }
 
 .left-nav-section ul {
@@ -340,13 +341,8 @@ ul.control-menu-list li a{
 /* RIGHT CONTENT Start */
 
 .right-content-section {
-    width: 80%;
+    width: 85%;
     height: 100%;
-    background: var(--body-bg);
-    background: var(--body-moz-bg);
-    background: var(--body-webkit-bg);
-    background: var(--body-gradient-bg);
-    filter: var(--body-filter);
     overflow: auto;
 }
 
@@ -359,3 +355,14 @@ ul.control-menu-list li a{
 }
 
 /* RIGHT CONTENT End */
+
+
+.card {
+    background-color: transparent;
+    padding: 30px;
+    border-radius: 8px;
+    margin: 30px 40px;
+    -webkit-box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.75);
+}

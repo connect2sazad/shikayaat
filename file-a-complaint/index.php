@@ -95,7 +95,7 @@ $run_query_priorities = mysqli_query($conn, $query);
                             <div class="message-text">Your complaint has been saved! <br> Your complaint refno is <span id="ref_no_show"></span>. <a id="href-refno" href="">Check</a>.</div>
                         </div>
 
-                        <div id="form-complaint">
+                        <div id="form-complaint" class="card">
                             <h1 class="form-heading">File a Complaint</h1>
 
                             <div class="input-control">
@@ -103,7 +103,7 @@ $run_query_priorities = mysqli_query($conn, $query);
                                 <input type="text" id="title" name="title" autocomplete="off" spellcheck="false" required aria-required="true">
                             </div>
                             <div class="input-control">
-                                <label for="type-id">Responsible Authority</label>
+                                <label for="type-id">Directing Authority</label>
                                 <select id="type-id">
                                     <option value="none" selected disabled> </option>
                                     <?php
@@ -142,7 +142,7 @@ $run_query_priorities = mysqli_query($conn, $query);
                                 <input type="file" id="file-input" multiple>
                             </div>
                             <div class="input-control">
-                                <input type="submit" id="submit-btn" class="submit-btn" value="FILE" />
+                                <input type="submit" id="submit-btn" class="submit-btn" value="FILE" multiple />
                             </div>
 
 
