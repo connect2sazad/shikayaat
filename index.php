@@ -3,12 +3,14 @@
 require_once "./constants.php";
 require_once ___FUNCTIONS___;
 
-// session_start();
-// if (!isset($_SESSION['msh_admin']) || !array_key_exists('msh_admin', $_SESSION)) {
-//   header('location: login.php');
-// } else {
-//   // do nothing
-// }
+session_start();
+if (!isset($_SESSION[USER_GLOBAL_VAR]) || !array_key_exists(USER_GLOBAL_VAR, $_SESSION)) {
+  header('location: login.php');
+} else {
+  // do nothing
+}
+
+$pn = isset($_GET['pn']) ? $_GET['pn'] : '404';
 
 // ob_start("minifier");
 
@@ -33,7 +35,7 @@ require_once ___FUNCTIONS___;
       <?= getComponent('header') ?>
       <?= getSidebar() ?>
       <section class="right-content-section" id="right-content-section">
-
+        dashboard
       </section>
 
     </div>

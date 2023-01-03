@@ -29,6 +29,9 @@
     }
 
     if(!defined('GOOGLE_INSIGHTS')){
-        define('GOOGLE_INSIGHTS', 'AIzaSyAmtzGoCjuYMyreGO-8FtDBk8P1nqrRR9w');
+        define('GOOGLE_INSIGHTS', '##########');
     }
 
+    if(!defined('USER_GLOBAL_VAR')){
+        define('USER_GLOBAL_VAR', 'shikayaat_user');
+    }

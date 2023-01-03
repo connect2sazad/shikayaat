@@ -10,6 +10,9 @@ function loadStyleSheets()
         
             <!-- font awesome cdn link  -->
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+            <!-- toast notification cdn link  -->
+            <link rel="stylesheet" href="' . systemVariable('SITE_DIR') . 'assets/vendors/toastify/toastify.css">
         
             <!-- custom css file link  -->
             <link rel="stylesheet" href="' . systemVariable('SITE_DIR') . 'assets/css/style002.css">
@@ -26,7 +29,11 @@ function loadScripts()
 {
 
     $scripts = '
+            <!-- jquery js -->
             <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+            
+            <!-- toast notification js -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
             <script src="' . systemVariable('SITE_DIR') . 'assets/js/functions.js"></script>
         ';
@@ -34,17 +41,21 @@ function loadScripts()
     return $scripts;
 }
 
-function loadFooterScripts()
+function loadFooterScripts($load_base = true)
 {
     $footer_scripts = '
 
             <!-- swiper js link  -->
             <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
 
-            <!-- base js link  --> 
-            <script src="' . systemVariable('SITE_DIR') . 'assets/js/base.js"></script>
-        
-            <!-- custom js file link  -->
+            <!-- toast notification js link  -->
+            <script src="' . systemVariable('SITE_DIR') . 'assets/vendors/toastify/toastify.js"></script>
+';
+    if ($load_base) {
+        echo '<!-- base js link  --> 
+            <script src="' . systemVariable('SITE_DIR') . 'assets/js/base.js"></script>';
+    }
+    echo ' <!-- custom js file link  -->
             <script src="' . systemVariable('SITE_DIR') . 'assets/js/addon.js"></script>
         
     ';
@@ -56,8 +67,6 @@ function loadFooterScripts()
 function loadMetaData(...$meta_unique_name)
 {
     if (array_key_exists(0, $meta_unique_name)) {
-
-
 
         $meta = '
             <meta charset="UTF-8">
@@ -186,14 +195,14 @@ function systemVariable($variable_name)
     return $fetch['value'];
 }
 
-function getImage($image_name)
-{
-    // $query = "SELECT * FROM `images` WHERE `images`.`image_name` = '$image_name'";
-    $query = WHERE('images', 'image_name', $image_name);
-    $run_query = runQuery($query);
-    $fetch = mysqli_fetch_assoc($run_query);
-    return $fetch;
-}
+// function getImage($image_name)
+// {
+//     // $query = "SELECT * FROM `images` WHERE `images`.`image_name` = '$image_name'";
+//     $query = WHERE('images', 'image_name', $image_name);
+//     $run_query = runQuery($query);
+//     $fetch = mysqli_fetch_assoc($run_query);
+//     return $fetch;
+// }
 
 
 function getComponent($component_name)
@@ -219,6 +228,20 @@ function is_trashed_or_deleted($any_row)
     } else {
         return true;
     }
+}
+
+// tentative function
+function getDirectingAuthoritiesList(){
+    $query = SELECT('users')." WHERE `users`.`user_type` != 2 AND `users`.`user_type` != 6;";
+    $run_query = runQuery($query);
+    return $run_query;
+}
+
+// tentative function
+function getPrioritiesList(){
+    $query = SELECT('priorities');
+    $run_query = runQuery($query);
+    return $run_query;
 }
 
 
@@ -278,90 +301,90 @@ if (!defined('___ADMIN_DIR___')) {
 }
 
 
-function adminVariable($variable_name)
-{
-    // if (session_status() === PHP_SESSION_NONE) {
-    //     session_start();
-    // }
-    $query = WHERE('admins', 'user_auth', $_SESSION['msh_admin']);
-    $run_query = runQuery($query);
-    $fetch = mysqli_fetch_assoc($run_query);
-    return $fetch[$variable_name];
-}
+// function adminVariable($variable_name)
+// {
+//     // if (session_status() === PHP_SESSION_NONE) {
+//     //     session_start();
+//     // }
+//     $query = WHERE('admins', 'user_auth', $_SESSION[USER_GLOBAL_VAR]);
+//     $run_query = runQuery($query);
+//     $fetch = mysqli_fetch_assoc($run_query);
+//     return $fetch[$variable_name];
+// }
 
 
-function createQueryForSEO($object, $table_name, $id)
-{
+// function createQueryForSEO($object, $table_name, $id)
+// {
 
-    $meta_unique_name = $table_name . "_" . $id;
-    $updated_by = $object['updated_by'];
-    $meta_keywords = $object['meta-keywords'];
-    $meta_description = $object['meta-description'];
+//     $meta_unique_name = $table_name . "_" . $id;
+//     $updated_by = $object['updated_by'];
+//     $meta_keywords = $object['meta-keywords'];
+//     $meta_description = $object['meta-description'];
 
-    $dup_request = $object;
+//     $dup_request = $object;
 
-    $meta_field_ids = array();
-    $meta_names = array();
-    $meta_properties = array();
+//     $meta_field_ids = array();
+//     $meta_names = array();
+//     $meta_properties = array();
 
-    foreach ($dup_request as $key => $value) {
-        if (startsWith($key, 'name-content-')) {
-            $field_id = getMetaFieldId($key, 'name-content-');
-            array_push($meta_field_ids, $field_id);
-        } else if (startsWith($key, 'property-content-')) {
-            $field_id = getMetaFieldId($key, 'property-content-');
-            array_push($meta_field_ids, $field_id);
-        }
-    }
+//     foreach ($dup_request as $key => $value) {
+//         if (startsWith($key, 'name-content-')) {
+//             $field_id = getMetaFieldId($key, 'name-content-');
+//             array_push($meta_field_ids, $field_id);
+//         } else if (startsWith($key, 'property-content-')) {
+//             $field_id = getMetaFieldId($key, 'property-content-');
+//             array_push($meta_field_ids, $field_id);
+//         }
+//     }
 
-    for ($i = 0; $i < count($meta_field_ids); $i++) {
-        $field_id = $meta_field_ids[$i];
-        if (array_key_exists('name-' . $field_id, $dup_request)) {
-            $meta_names[$dup_request['name-' . $field_id]] = $dup_request['name-content-' . $field_id];
-        } else if (array_key_exists('property-' . $field_id, $dup_request)) {
-            $meta_properties[$dup_request['property-' . $field_id]] = $dup_request['property-content-' . $field_id];
-        }
-    }
+//     for ($i = 0; $i < count($meta_field_ids); $i++) {
+//         $field_id = $meta_field_ids[$i];
+//         if (array_key_exists('name-' . $field_id, $dup_request)) {
+//             $meta_names[$dup_request['name-' . $field_id]] = $dup_request['name-content-' . $field_id];
+//         } else if (array_key_exists('property-' . $field_id, $dup_request)) {
+//             $meta_properties[$dup_request['property-' . $field_id]] = $dup_request['property-content-' . $field_id];
+//         }
+//     }
 
-    $sql = "INSERT INTO `metas` (`meta_unique_name`, `attr_type`, `attr_value`, `content`, `updated_by`) VALUES ('$meta_unique_name', 'name', 'keywords', '$meta_keywords', '$updated_by'), ('$meta_unique_name', 'name', 'description', '$meta_description', '$updated_by'),";
-    foreach ($meta_names as $key => $value) {
-        $sql .= " ('$meta_unique_name', 'name', '$key', '$value', '$updated_by'),";
-    }
+//     $sql = "INSERT INTO `metas` (`meta_unique_name`, `attr_type`, `attr_value`, `content`, `updated_by`) VALUES ('$meta_unique_name', 'name', 'keywords', '$meta_keywords', '$updated_by'), ('$meta_unique_name', 'name', 'description', '$meta_description', '$updated_by'),";
+//     foreach ($meta_names as $key => $value) {
+//         $sql .= " ('$meta_unique_name', 'name', '$key', '$value', '$updated_by'),";
+//     }
 
-    foreach ($meta_properties as $key => $value) {
-        $sql .= " ('$meta_unique_name', 'property', '$key', '$value', '$updated_by'),";
-    }
+//     foreach ($meta_properties as $key => $value) {
+//         $sql .= " ('$meta_unique_name', 'property', '$key', '$value', '$updated_by'),";
+//     }
 
-    $sql = substr($sql, 0, (strlen($sql) - 1));
-    $sql .= ";";
+//     $sql = substr($sql, 0, (strlen($sql) - 1));
+//     $sql .= ";";
 
-    return $sql;
-}
+//     return $sql;
+// }
 
-function setMetaData($query, $table_name, $id)
-{
-    $meta_unique_name = $table_name . "_" . $id;
-    $remove_old_data = DELETE('metas', 'meta_unique_name', $meta_unique_name);
-    $remove_old_data = runQuery($remove_old_data);
-    if ($remove_old_data == 1) {
-        $new_seo = runQuery($query);
-    }
-}
+// function setMetaData($query, $table_name, $id)
+// {
+//     $meta_unique_name = $table_name . "_" . $id;
+//     $remove_old_data = DELETE('metas', 'meta_unique_name', $meta_unique_name);
+//     $remove_old_data = runQuery($remove_old_data);
+//     if ($remove_old_data == 1) {
+//         $new_seo = runQuery($query);
+//     }
+// }
 
-function getMetaData($meta_unique_name)
-{
-    $metas = WHERE('metas', 'meta_unique_name', $meta_unique_name);
-    $metas = runQuery($metas);
-    return $metas;
-}
+// function getMetaData($meta_unique_name)
+// {
+//     $metas = WHERE('metas', 'meta_unique_name', $meta_unique_name);
+//     $metas = runQuery($metas);
+//     return $metas;
+// }
 
-function getMetaSingle($meta_unique_name, $property_type)
-{
-    $meta = SELECT('metas') . " WHERE `metas`.`meta_unique_name` = '$meta_unique_name' AND `metas`.`attr_value` = '$property_type';";
-    $meta = runQuery($meta);
-    $meta = mysqli_fetch_assoc($meta);
-    return $meta;
-}
+// function getMetaSingle($meta_unique_name, $property_type)
+// {
+//     $meta = SELECT('metas') . " WHERE `metas`.`meta_unique_name` = '$meta_unique_name' AND `metas`.`attr_value` = '$property_type';";
+//     $meta = runQuery($meta);
+//     $meta = mysqli_fetch_assoc($meta);
+//     return $meta;
+// }
 
 function updatesystemVariable($variable_name, $variable_value, $current_admin)
 {
@@ -405,8 +428,8 @@ function getAjaxRequester()
         <script>
             function ajax_request(data, is_serialized = true) {
 
-                const api_url = \"" . ___ADMIN_DIR___ . "api.php\";
-                const api_key = \"FJGCP-4DFJD-GJY49-VJBQ7-HYRR2-KH2J9-PC326-T44D4-39H6V-TVPBY\";
+                const api_url = \"" . SITE_DIR . "includes/api.php\";
+                const api_key = \"".md5('MTDNG-PDDGD-MHMV4-F2MBY-RCXKK')."\";
             
             
                 data += \"&api_key=\" + api_key;
@@ -455,10 +478,10 @@ function api_test($request)
 }
 
 
-function admin_login($request)
+function login($request)
 {
 
-    $query = WHERE('admins', 'user_auth', $request['user_auth']);
+    $query = WHERE('users', 'userid', $request['userid']);
     $run_query = runQuery($query);
 
 
@@ -468,15 +491,15 @@ function admin_login($request)
 
         $fetch = mysqli_fetch_assoc($run_query);
 
-        if($fetch['is_active'] != 1){
+        if ($fetch['is_active'] != 1) {
             $response['status'] = 'failed';
-            $response['message'] = "You admin account has been deactivated!";
+            $response['message'] = "Your account has been deactivated!";
             return $response;
         }
 
-        if($fetch['is_deleted'] == 1){
+        if ($fetch['is_deleted'] == 1) {
             $response['status'] = 'failed';
-            $response['message'] = "No such Admin Found!";
+            $response['message'] = "No such User Found!";
             return $response;
         }
 
@@ -484,14 +507,14 @@ function admin_login($request)
             $response['status'] = 'success';
             $response['message'] = "Login Successfull!";
             session_start();
-            $_SESSION['msh_admin'] = $fetch['user_auth'];
+            $_SESSION[USER_GLOBAL_VAR] = $fetch['userid'];
         } else {
             $response['status'] = 'failed';
             $response['message'] = "Incorrect Credentials!";
         }
     } else {
         $response['status'] = 'failed';
-        $response['message'] = "No such Admin Found!";
+        $response['message'] = "No such User Found!";
     }
     return $response;
 }
@@ -558,8 +581,8 @@ function getRandomId($length, $type = 'alpha_numeric')
             $str = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
             break;
         case 'alpha_uppercase_numeric':
-                $str = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-                break;
+            $str = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            break;
         case 'alpha_lowercase':
             $str = 'abcdefghijklmnopqrstuvwxyz';
             break;
@@ -611,10 +634,11 @@ function getMetaFieldId($string, $startString)
     return str_replace($startString, '', $string);
 }
 
-function json_validator($data) {
+function json_validator($data)
+{
     if (!empty($data)) {
-        return is_string($data) && 
-          is_array(json_decode($data, true)) ? true : false;
+        return is_string($data) &&
+            is_array(json_decode($data, true)) ? true : false;
     }
     return false;
 }
