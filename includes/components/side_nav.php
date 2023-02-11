@@ -57,10 +57,10 @@ function get_sidebar($selected_menu = 'home')
     echo '<section class="left-nav-section" id="left-nav-section"><ul>';
     echo sidebar_menu_item('Dashboard', SITE_HOME, $icons['home'], $selected_menu == 'home');
     echo sidebar_menu_item('File a Complaint', SITE_HOME . 'page/?pn=file-a-complaint', $icons['file-a-complaint'], $selected_menu == 'file-a-complaint');
-    echo sidebar_menu_item('All Complaints', SITE_HOME . 'all-complaints', $icons['all-complaints'], $selected_menu == 'all-complaints');
+    echo sidebar_menu_item('All Complaints', SITE_HOME . 'page/?pn=all-complaints', $icons['all-complaints'], $selected_menu == 'all-complaints');
     echo sidebar_menu_item('Search Complaint', SITE_HOME . 'search-complaint', $icons['search-complaint'], $selected_menu == 'search-complaint');
     echo sidebar_menu_item('Settings', SITE_HOME . 'settings', $icons['settings'], $selected_menu == 'settings');
-    echo sidebar_menu_item('Support', SITE_HOME . 'support', $icons['support'], $selected_menu == 'support');
+    echo sidebar_menu_item('Support', SITE_HOME . 'page/?pn=support', $icons['support'], $selected_menu == 'support');
     echo sidebar_menu_item('Logout', SITE_HOME . 'logout.php', $icons['logout'], $selected_menu == 'logout');
     echo '<a href="#collapse_expand" id="collapse_expand">
             <li>

@@ -45,14 +45,14 @@ $pn = isset($_GET['pn']) ? $_GET['pn'] : '404';
 
     <script src="<?= SITE_DIR ?>assets/vendors/tinymce/tinymce.min.js"></script>
 
-    <script>
+    <!-- <script>
         // $('#tox-statusbar__branding').hide();
-        $('.tox-promotion').hide();
+        // $('.tox-promotion').hide();
         tinymce.init({
             selector: 'textarea',
             height: 500,
             plugins: [
-                'advlist', 'autolink', 'link', 'image', 'lists', 'charmap', 'preview', 'anchor', 'destinationbreak',
+                'advlist', 'autolink', 'link', 'image', 'lists', 'charmap', 'preview', 'anchor', 'pagebreak',
                 'searchreplace', 'wordcount', 'visualblocks', 'code', 'fullscreen', 'insertdatetime', 'media',
                 'table', 'emoticons', 'template', 'help'
             ],
@@ -70,7 +70,7 @@ $pn = isset($_GET['pn']) ? $_GET['pn'] : '404';
             // skin: skin,
             // content_css: content_css,
         });
-    </script>
+    </script> -->
 </body>
 
 </html>

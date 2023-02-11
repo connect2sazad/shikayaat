@@ -175,7 +175,7 @@ function DELETE($table_name, $column_name, $value)
 function WHERE($table_name, $column_name, $value)
 {
 
-    $query = SELECT($table_name) . " WHERE `$table_name`.`$column_name` = '$value';";
+    $query = SELECT($table_name) . " WHERE `$table_name`.`$column_name` = '$value'";
 
     return $query;
 }
@@ -244,6 +244,25 @@ function getPrioritiesList(){
     return $run_query;
 }
 
+function getComplaintsList(){
+    $query = WHERE('complaints', 'is_deleted', 0)." ORDER BY `id` DESC;";
+    $run_query = runQuery($query);
+    return $run_query;
+}
+
+function getComplaintDetails($refno){
+    $query = WHERE('complaints', 'refno', $refno);
+    $run_query = runQuery($query);
+    // if($run_query == null){
+    //     return array('status' => 'failed', 'message' => "No such Complaint found!");
+    // }
+    // $fetch = mysqli_fetch_assoc($run_query);
+    // if($fetch['is_deleted'] == 1){
+    //     return array('status' => 'failed', 'message' => "No such Complaint found!");
+    // }
+    // return $fetch;
+    return $run_query;
+}
 
 if (!defined('SITE_HOME')) {
     define('SITE_HOME', systemVariable('SITE_HOME'));

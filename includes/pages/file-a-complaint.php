@@ -10,14 +10,14 @@
             </div>
             <div class="input-control">
                 <label for="to_userid">Directing To*</label>
-                <select id="to_userid" required>
+                <select id="to_userid" name="to_userid" required>
                     <option value="none" selected disabled> </option>
                     <?php
                     $directing_authorities_list = getDirectingAuthoritiesList();
                     if (mysqli_num_rows($directing_authorities_list) > 0) {
                         // print_r(mysqli_fetch_assoc(getDirectingAuthoritiesList()));
                         while ($row = mysqli_fetch_assoc($directing_authorities_list)) {
-                            echo ' <option value="' . $row['id'] . '">' . $row['userid'] . ' - ' . $row['first_name'] . ' ' . $row['last_name'] . '</option>';
+                            echo ' <option value="' . $row['userid'] . '">' . $row['userid'] . ' - ' . $row['first_name'] . ' ' . $row['last_name'] . '</option>';
                             // echo $row['id']."<br>";
                         }
                     }
@@ -26,7 +26,7 @@
             </div>
             <div class="input-control">
                 <label for="priority">Priority*</label>
-                <select id="priority" required>
+                <select id="priority" name="priorityid" required>
                     <option value="none" selected disabled> </option>
                     <?php
                     $priorities_list = getPrioritiesList();
@@ -41,11 +41,11 @@
             </div>
             <div class="input-control">
                 <label for="description">Problem Description*</label>
-                <textarea class="tinymce-textarea" id="description" name="description" required></textarea>
+                <textarea class="tinymce-textarea" name="description" required></textarea>
             </div>
             <div class="input-control">
                 <label for="suggestions">Suggestions</label>
-                <textarea class="tinymce-textarea" id="suggestions" name="suggestions"></textarea>
+                <textarea class="tinymce-textarea" name="suggestions"></textarea>
             </div>
             <div class="input-control">
                 <label for="file-input">Attachments</label>

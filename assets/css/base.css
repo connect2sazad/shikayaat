@@ -189,6 +189,14 @@ main {
     font-size: 30px;
 }
 
+.form-heading a{
+    text-decoration: none;
+}
+
+.form-heading a:hover{
+    text-decoration: underline;
+}
+
 /* HEADER SECTION Start */
 
 header {
