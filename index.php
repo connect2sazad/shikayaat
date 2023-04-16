@@ -27,7 +27,7 @@ $pn = isset($_GET['pn']) ? $_GET['pn'] : '404';
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
   <style>
-    canvas{
+    canvas {
       height: 100%;
       width: 100%;
     }
@@ -52,7 +52,7 @@ $pn = isset($_GET['pn']) ? $_GET['pn'] : '404';
             </div>
           </div>
 
-          <div class="tile red-tile">
+          <div class="tile">
             <div class="icon"><i class="fa fa-users" aria-hidden="true"></i></div>
             <div class="content">
               <div class="number">452</div>
@@ -60,7 +60,7 @@ $pn = isset($_GET['pn']) ? $_GET['pn'] : '404';
             </div>
           </div>
 
-          <div class="tile green-tile">
+          <div class="tile">
             <div class="icon"><i class="fa fa-building" aria-hidden="true"></i></div>
             <div class="content">
               <div class="number">452</div>
@@ -68,7 +68,7 @@ $pn = isset($_GET['pn']) ? $_GET['pn'] : '404';
             </div>
           </div>
 
-          <div class="tile yellow-tile">
+          <div class="tile">
             <div class="icon"><i class="fa fa-university" aria-hidden="true"></i></div>
             <div class="content">
               <div class="number">1</div>
@@ -84,7 +84,7 @@ $pn = isset($_GET['pn']) ? $_GET['pn'] : '404';
               <h1 class="card-heading">All Complaints</h1>
               <div class="card-content m0 p0">
                 <div class="blank-60px"></div>
-                <canvas id="myChart1"></canvas>
+                <canvas id="lineChart"></canvas>
                 <div class="blank-30px"></div>
               </div>
             </div>
@@ -94,7 +94,7 @@ $pn = isset($_GET['pn']) ? $_GET['pn'] : '404';
               <h1 class="card-heading">All Complaints</h1>
               <div class="card-content m0">
                 <div class="blank-60px"></div>
-                <canvas id="myChart"></canvas>
+                <canvas id="pieChart"></canvas>
                 <div class="blank-30px"></div>
               </div>
             </div>
@@ -105,26 +105,50 @@ $pn = isset($_GET['pn']) ? $_GET['pn'] : '404';
 
     </div>
 
+    <?php
+    $priorities_list = getPrioritiesList();
+    $priority_colors = array();
+    $priority_names = array();
+    $priority_counts = array();
+    if (mysqli_num_rows($priorities_list) > 0) {
+      while ($row = mysqli_fetch_assoc($priorities_list)) {
+        if ($row['is_priority']) {
+          array_push($priority_colors, $row['color']);
+          array_push($priority_names, $row['priority_name']);
+          // array_push($priority_names, $row['priorityid']);
+          // $priority_counts[$row['priorityid']] = 0;
+          array_push($priority_counts, getPriorityCounts($row['priorityid'])['COUNT(*)']);
+          // echo getPriorityCounts($row['priorityid']);
+        }
+      }
+    }
+    
+
+    print_r($priority_counts);
+    ?>
+
     <script>
       const xValues1 = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000];
 
-      new Chart("myChart1", {
+      new Chart("lineChart", {
         type: "line",
         data: {
           labels: xValues1,
           datasets: [{
-            data: [860, 1140, 1060, 1060, 1070, 1110, 1330, 2210, 7830, 2478],
-            borderColor: "red",
-            fill: false
-          }, {
-            data: [1600, 1700, 1700, 1900, 2000, 2700, 4000, 5000, 6000, 7000],
-            borderColor: "green",
-            fill: false
-          }, {
-            data: [300, 700, 2000, 5000, 6000, 4000, 2000, 1000, 200, 100],
-            borderColor: "blue",
-            fill: false
-          }]
+              data: [860, 1140, 1060, 1060, 1070, 1110, 1330, 2210, 7830, 2478],
+              borderColor: "red",
+              fill: false
+            },
+            {
+              data: [1600, 1700, 1700, 1900, 2000, 2700, 4000, 5000, 6000, 7000],
+              borderColor: "green",
+              fill: false
+            }, {
+              data: [300, 700, 2000, 5000, 6000, 4000, 2000, 1000, 200, 100],
+              borderColor: "blue",
+              fill: false
+            }
+          ]
         },
         options: {
           legend: {
@@ -135,15 +159,11 @@ $pn = isset($_GET['pn']) ? $_GET['pn'] : '404';
 
 
       // pie chart
-      var xValues = ["Italy", "France", "Spain"];
-      var yValues = [55, 49, 44];
-      var barColors = [
-        "#b91d47",
-        "#00aba9",
-        "#2b5797"
-      ];
+      var xValues = [<?php echo '"' . implode('", "', $priority_names) . '"'; ?>];
+      var yValues = [<?php echo '"' . implode('", "', $priority_counts) . '"'; ?>];
+      var barColors = [<?php echo '"#' . implode('", "#', $priority_colors) . '"'; ?>];
 
-      new Chart("myChart", {
+      new Chart("pieChart", {
         type: "pie",
         data: {
           labels: xValues,
@@ -151,12 +171,6 @@ $pn = isset($_GET['pn']) ? $_GET['pn'] : '404';
             backgroundColor: barColors,
             data: yValues
           }]
-        },
-        options: {
-          title: {
-            display: true,
-            text: "World Wide Wine Production 2018"
-          }
         }
       });
     </script>

@@ -557,6 +557,8 @@ ul.control-menu-list li a {
     width: calc(100% - 100px);
     height: 100%;
     background-color: rgb(94, 90, 90);
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
 }
 
 .info-tiles .tile .content .number{
@@ -568,11 +570,13 @@ ul.control-menu-list li a {
     font-size: 30px;
     font-weight: bold;
     color: white;
+    color: rgb(94, 90, 90);
 }
 
 .info-tiles .tile .content .number-desc{
     align-items: start;
     font-size: 15px;
+    color: rgb(39, 37, 37);
     font-weight: normal;
 }
 

@@ -251,6 +251,12 @@ function getPriorityColor($priority_id){
     return $fetch['color'];
 }
 
+function getPriorityCounts($priority_id){
+    $query = "SELECT COUNT(*) FROM `complaints` WHERE `complaints`.`priorityid` = '".$priority_id."';";
+    $run_query = runQuery($query);
+    return mysqli_fetch_assoc($run_query);
+}
+
 function getComplaintsList(){
     $query = WHERE('complaints', 'is_deleted', 0)." ORDER BY `id` DESC;";
     $run_query = runQuery($query);

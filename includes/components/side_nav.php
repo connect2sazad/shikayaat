@@ -45,6 +45,7 @@ function get_sidebar($selected_menu = 'home')
                 d="M12 2C6.486 2 2 6.486 2 12v4.143C2 17.167 2.897 18 4 18h1a1 1 0 0 0 1-1v-5.143a1 1 0 0 0-1-1h-.908C4.648 6.987 7.978 4 12 4s7.352 2.987 7.908 6.857H19a1 1 0 0 0-1 1V18c0 1.103-.897 2-2 2h-2v-1h-4v3h6c2.206 0 4-1.794 4-4 1.103 0 2-.833 2-1.857V12c0-5.514-4.486-10-10-10z"
                 style="user-select: auto;"></path>
             </svg>',
+        'sales' => '<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0z"></path><path d="M17 2H7c-1.1 0-2 .9-2 2v2c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 4H7V4h10v2zm3 16H4c-1.1 0-2-.9-2-2v-1h20v1c0 1.1-.9 2-2 2zm-1.47-11.81A2.008 2.008 0 0016.7 9H7.3c-.79 0-1.51.47-1.83 1.19L2 18h20l-3.47-7.81zM9.5 16h-1c-.28 0-.5-.22-.5-.5s.22-.5.5-.5h1c.28 0 .5.22.5.5s-.22.5-.5.5zm0-2h-1c-.28 0-.5-.22-.5-.5s.22-.5.5-.5h1c.28 0 .5.22.5.5s-.22.5-.5.5zm0-2h-1c-.28 0-.5-.22-.5-.5s.22-.5.5-.5h1c.28 0 .5.22.5.5s-.22.5-.5.5zm3 4h-1c-.28 0-.5-.22-.5-.5s.22-.5.5-.5h1c.28 0 .5.22.5.5s-.22.5-.5.5zm0-2h-1c-.28 0-.5-.22-.5-.5s.22-.5.5-.5h1c.28 0 .5.22.5.5s-.22.5-.5.5zm0-2h-1c-.28 0-.5-.22-.5-.5s.22-.5.5-.5h1c.28 0 .5.22.5.5s-.22.5-.5.5zm3 4h-1c-.28 0-.5-.22-.5-.5s.22-.5.5-.5h1c.28 0 .5.22.5.5s-.22.5-.5.5zm0-2h-1c-.28 0-.5-.22-.5-.5s.22-.5.5-.5h1c.28 0 .5.22.5.5s-.22.5-.5.5zm0-2h-1c-.28 0-.5-.22-.5-.5s.22-.5.5-.5h1c.28 0 .5.22.5.5s-.22.5-.5.5z"></path></svg>',
         'logout' => '<svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24"
             stroke-linecap="round" stroke-linejoin="round" height="1em" width="1em"
             xmlns="http://www.w3.org/2000/svg" style="user-select: auto;">
@@ -58,9 +59,10 @@ function get_sidebar($selected_menu = 'home')
     echo sidebar_menu_item('Dashboard', SITE_HOME, $icons['home'], $selected_menu == 'home');
     echo sidebar_menu_item('File a Complaint', SITE_HOME . 'page/?pn=file-a-complaint', $icons['file-a-complaint'], $selected_menu == 'file-a-complaint');
     echo sidebar_menu_item('All Complaints', SITE_HOME . 'page/?pn=all-complaints', $icons['all-complaints'], $selected_menu == 'all-complaints');
-    echo sidebar_menu_item('Search Complaint', SITE_HOME . 'search-complaint', $icons['search-complaint'], $selected_menu == 'search-complaint');
-    echo sidebar_menu_item('Settings', SITE_HOME . 'settings', $icons['settings'], $selected_menu == 'settings');
+    echo sidebar_menu_item('Search Complaint', SITE_HOME . 'page/?pn=search-complaint', $icons['search-complaint'], $selected_menu == 'search-complaint');
+    echo sidebar_menu_item('Settings', SITE_HOME . 'page/?pn=settings', $icons['settings'], $selected_menu == 'settings');
     echo sidebar_menu_item('Support', SITE_HOME . 'page/?pn=support', $icons['support'], $selected_menu == 'support');
+    echo sidebar_menu_item('Sales', SITE_HOME . 'page/?pn=sales', $icons['sales'], $selected_menu == 'sales');
     echo sidebar_menu_item('Logout', SITE_HOME . 'logout.php', $icons['logout'], $selected_menu == 'logout');
     echo '<a href="#collapse_expand" id="collapse_expand">
             <li>

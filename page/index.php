@@ -22,7 +22,7 @@ $pn = isset($_GET['pn']) ? $_GET['pn'] : '404';
 <head>
 
   <?= loadMetaData() ?>
-  <?= loadTitleAndFavicon('The digital complaint box') ?>
+  <?= loadTitleAndFavicon('The Digital Complaint Platform') ?>
   <?= loadStyleSheets() ?>
   <?= loadScripts() ?>
   <?= getAjaxRequester() ?>
@@ -34,7 +34,7 @@ $pn = isset($_GET['pn']) ? $_GET['pn'] : '404';
     <?= getComponent('header') ?>
     <div class="section-holder">
       
-        <?= getSidebar() ?>
+        <?= getSidebar($pn) ?>
         <section class="right-content-section" id="right-content-section">
           <?= getPage($pn) ?>
         </section>

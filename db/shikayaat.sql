@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 11, 2023 at 03:19 AM
+-- Generation Time: Apr 16, 2023 at 01:04 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -52,7 +52,9 @@ CREATE TABLE `complaints` (
 INSERT INTO `complaints` (`id`, `refno`, `title`, `userid`, `to_userid`, `priorityid`, `description`, `suggestions`, `attachments`, `responses`, `reminders`, `status`, `is_deleted`, `created_at`, `updated_at`) VALUES
 (22, '7MS123NEZUC', 'fsdf', 'connect2sazad', 'trans_dept', 'high', 'dsfsd', 'fsdf', '[\"7MS123NEZUC_1.xls\"]', '[]', '[]', 'pending', 0, '2023-01-20 08:28:21', '2023-01-20 08:28:21'),
 (23, '0GLKI6WTOQ8', 'werftds', 'connect2sazad', 'acad_dept', 'low', 'gdf', 'dfgdfg', '[\"0GLKI6WTOQ8_1.png\"]', '[]', '[]', 'pending', 0, '2023-01-20 08:47:29', '2023-01-20 08:47:29'),
-(24, '3H8REGCMVOP', 'Test', 'connect2sazad', 'trans_dept', 'low', 'test desc', 'test sugg', '[\"3H8REGCMVOP_1.pdf\"]', '[]', '[]', 'pending', 0, '2023-02-11 02:14:06', '2023-02-11 02:14:06');
+(24, '3H8REGCMVOP', 'Test', 'connect2sazad', 'trans_dept', 'low', 'test desc', 'test sugg', '[\"3H8REGCMVOP_1.pdf\"]', '[]', '[]', 'pending', 0, '2023-02-11 02:14:06', '2023-02-11 02:14:06'),
+(25, 'G1HC9M7SWJY', 'xvcxc', 'connect2sazad', 'trans_dept', 'medium', 'sfsdfsdf', 'sdfsdfsdfsdf', '[\"G1HC9M7SWJY_1.png\"]', '[]', '[]', 'pending', 0, '2023-04-16 07:26:44', '2023-04-16 07:26:44'),
+(26, 'R750QAN3ZH2', 'sdfsd', 'connect2sazad', 'acad_dept', 'medium', 'sdfdf', 'sdfsdf', '[]', '[]', '[]', 'pending', 0, '2023-04-16 07:59:44', '2023-04-16 07:59:44');
 
 -- --------------------------------------------------------
 
@@ -72,9 +74,9 @@ CREATE TABLE `priorities` (
 --
 
 INSERT INTO `priorities` (`priorityid`, `priority_name`, `is_priority`, `color`) VALUES
-('high', 'High', 1, 'red'),
-('low', 'Low', 1, 'white'),
-('medium', 'Medium', 1, 'yellow'),
+('high', 'High', 1, 'F2DEDE'),
+('low', 'Low', 1, '999696'),
+('medium', 'Medium', 1, 'DFF0D8'),
 ('pending', 'Pending', 0, 'c04848'),
 ('solved', 'Solved', 0, 'dddddd');
 
@@ -197,7 +199,7 @@ ALTER TABLE `user_types`
 -- AUTO_INCREMENT for table `complaints`
 --
 ALTER TABLE `complaints`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `systemv`
