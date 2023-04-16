@@ -1,15 +1,17 @@
 <?php
-    $refno = isset($_GET['refno']) ? $_GET['refno'] : '';
-    $complaint = getComplaintDetails($refno);
+$refno = isset($_GET['refno']) ? $_GET['refno'] : '';
+$complaint = getComplaintDetails($refno);
 ?>
 <div class="content-wrapper">
-    <div class="card">
+    <div class="card full-width">
 
-        <h1 class="form-heading"><a href="./?pn=all-complaints">All Complaints</a> / <?=$refno?></h1>
+        <h1 class="card-heading"><a href="./?pn=all-complaints">All Complaints</a> / <?= $refno ?></h1>
 
-        <?php
-        print_r($complaint);
-        ?>
+        <div class="card-content">
+            <?php
+            print_r($complaint);
+            ?>
+        </div>
 
     </div>
 

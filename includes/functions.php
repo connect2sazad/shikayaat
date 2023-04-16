@@ -244,6 +244,13 @@ function getPrioritiesList(){
     return $run_query;
 }
 
+function getPriorityColor($priority_id){
+    $query = WHERE('priorities', 'priorityid', $priority_id);
+    $run_query = runQuery($query);
+    $fetch = mysqli_fetch_assoc($run_query);
+    return $fetch['color'];
+}
+
 function getComplaintsList(){
     $query = WHERE('complaints', 'is_deleted', 0)." ORDER BY `id` DESC;";
     $run_query = runQuery($query);
@@ -271,8 +278,6 @@ if (!defined('SITE_HOME')) {
 if (!defined('SITE_DIR')) {
     define('SITE_DIR', systemVariable('SITE_DIR'));
 }
-
-
 
 
 

@@ -49,3 +49,8 @@ https://codeseven.github.io/toastr/demo.html
 sample
 userid: connect2sazad
 password: Sa@127.0.0.1
+
+
+
+
+Design Ref: https://demo.w3layouts.com/demos_new/template_demo/06-01-2018/glance_design_dashboard-demo_Free/215073379/web/index.html?_gl=1*e616v9*_ga*MTUzNTIzMDM5OC4xNjc5OTgzOTAw*_ga_EGV5GTJEP5*MTY3OTk4Mzg5OS4xLjAuMTY3OTk4Mzg5OS4wLjAuMA..*_ga_9HSZ46TKMQ*MTY3OTk4Mzg5OS4xLjEuMTY3OTk4Mzg5OS4wLjAuMA..&_ga=2.2773552.123946019.1679983900-1535230398.1679983900

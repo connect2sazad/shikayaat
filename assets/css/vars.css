@@ -21,5 +21,6 @@
     /* others */
     --primary-border-radius: 15px;
     --header-height: 40px;
+    --header-padding: 15px;
 
 }

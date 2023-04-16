@@ -31,12 +31,13 @@ $pn = isset($_GET['pn']) ? $_GET['pn'] : '404';
 <body>
 
   <main>
+    <?= getComponent('header') ?>
     <div class="section-holder">
-      <?= getComponent('header') ?>
-      <?= getSidebar() ?>
-      <section class="right-content-section" id="right-content-section">
-        <?= getPage($pn) ?>
-      </section>
+      
+        <?= getSidebar() ?>
+        <section class="right-content-section" id="right-content-section">
+          <?= getPage($pn) ?>
+        </section>
 
     </div>
 

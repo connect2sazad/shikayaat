@@ -141,7 +141,7 @@
 
 
 /* ALL COMPLAINTS */
-.styled-table {
+/* .styled-table {
     border-collapse: collapse;
     margin: 25px 0;
     font-size: 0.9em;
@@ -165,14 +165,6 @@
     border-bottom: 1px solid var(--section-border-color);
 }
 
-/* .styled-table tbody tr:nth-of-type(odd) {
-    background-color: var(--left-nav-menu-hover);
-}
-
-.styled-table tbody tr:nth-of-type(even) {
-    background-color: var(--left-nav-bg);
-    color: var(--primary-color);
-} */
 
 .styled-table tbody tr.high td a,
 .styled-table tbody tr.medium td a,
@@ -219,7 +211,7 @@
 .styled-table tbody tr.solved:hover{
     background-color: #dddddd!important;
     color: var(--black)!important;
-}
+} */
 
 .colors-meaning{
     width: 100%;

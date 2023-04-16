@@ -35,3 +35,7 @@
     if(!defined('USER_GLOBAL_VAR')){
         define('USER_GLOBAL_VAR', 'shikayaat_user');
     }
+
+    if(!defined(('URI_URL'))){
+        define('URI_URL', "http" . (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "s" : "") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
+    }
