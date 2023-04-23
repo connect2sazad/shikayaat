@@ -36,6 +36,10 @@
         define('USER_GLOBAL_VAR', 'shikayaat_user');
     }
 
-    if(!defined(('URI_URL'))){
+    if(!defined('URI_URL')){
         define('URI_URL', "http" . (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "s" : "") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
+    }
+
+    if(!defined('NEWS_API')){
+        define('NEWS_API', 'http://127.0.0.1/news_and_events/get-nae/');
     }

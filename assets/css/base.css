@@ -82,6 +82,11 @@ main {
     width: 75%;
 }
 
+.column-70 {
+    height: 100%;
+    width: calc(70% - 2 * 20px);
+}
+
 .column-60 {
     height: 100%;
     width: calc(60% - 2 * 20px);
@@ -95,6 +100,12 @@ main {
 .column-40 {
     height: 100%;
     width: calc(40% - 20px);
+    margin-left: 20px;
+}
+
+.column-30 {
+    height: 100%;
+    width: calc(30% - 20px);
     margin-left: 20px;
 }
 

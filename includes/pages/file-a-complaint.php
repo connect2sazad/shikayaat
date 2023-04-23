@@ -43,11 +43,11 @@
                 </div>
                 <div class="input-control">
                     <label for="description">Problem Description*</label>
-                    <textarea class="tinymce-textarea" name="description" required></textarea>
+                    <textarea class="tinymce" id="editor1" name="description"></textarea>
                 </div>
                 <div class="input-control">
                     <label for="suggestions">Suggestions</label>
-                    <textarea class="tinymce-textarea" name="suggestions"></textarea>
+                    <textarea class="tinymce" id="editor2" name="suggestions"></textarea>
                 </div>
                 <div class="input-control">
                     <label for="file-input">Attachments</label>

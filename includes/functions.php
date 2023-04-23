@@ -4,15 +4,15 @@ function loadStyleSheets()
 {
 
     $stylesheets = '
-        
-            <!-- swiper css link  -->
-            <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
-        
+                
             <!-- font awesome cdn link  -->
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
-            <!-- toast notification cdn link  -->
+            <!-- toast notification link  -->
             <link rel="stylesheet" href="' . systemVariable('SITE_DIR') . 'assets/vendors/toastify/toastify.css">
+            
+            <!-- swiper link  -->
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
         
             <!-- custom css file link  -->
             <link rel="stylesheet" href="' . systemVariable('SITE_DIR') . 'assets/css/style002.css">
@@ -45,11 +45,11 @@ function loadFooterScripts($load_base = true)
 {
     $footer_scripts = '
 
-            <!-- swiper js link  -->
-            <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
-
             <!-- toast notification js link  -->
             <script src="' . systemVariable('SITE_DIR') . 'assets/vendors/toastify/toastify.js"></script>
+
+            <!-- swiper js link  -->
+            <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 ';
     if ($load_base) {
         echo '<!-- base js link  --> 
@@ -232,7 +232,7 @@ function is_trashed_or_deleted($any_row)
 
 // tentative function
 function getDirectingAuthoritiesList(){
-    $query = SELECT('users')." WHERE `users`.`user_type` != 2 AND `users`.`user_type` != 6;";
+    $query = SELECT('users')." WHERE `users`.`user_type_id` != 2 AND `users`.`user_type_id` != 6;";
     $run_query = runQuery($query);
     return $run_query;
 }
@@ -263,6 +263,12 @@ function getComplaintsList(){
     return $run_query;
 }
 
+function getComplaintsCount(){
+    $query = "SELECT COUNT(*) FROM `complaints` WHERE `complaints`.`is_deleted` = 0;";
+    $run_query = runQuery($query);
+    return mysqli_fetch_row($run_query)[0];
+}
+
 function getComplaintDetails($refno){
     $query = WHERE('complaints', 'refno', $refno);
     $run_query = runQuery($query);
@@ -276,6 +282,14 @@ function getComplaintDetails($refno){
     // return $fetch;
     return $run_query;
 }
+
+function last8MonthsComplaintsCounts(){
+    $query = "SELECT YEAR(`created_at`) as year, MONTH(`created_at`) as month, COUNT(*) as count FROM `complaints` WHERE `created_at` >= DATE_SUB(NOW(), INTERVAL 8 MONTH) GROUP BY YEAR(`created_at`), MONTH(`created_at`) ORDER BY year DESC, month DESC;";
+    $run_query = runQuery($query);
+    return $run_query;
+}
+
+
 
 if (!defined('SITE_HOME')) {
     define('SITE_HOME', systemVariable('SITE_HOME'));
@@ -328,6 +342,18 @@ if (!defined('SITE_DIR')) {
 // Admin Functions
 if (!defined('___ADMIN_DIR___')) {
     define('___ADMIN_DIR___', SITE_DIR . 'admin/');
+}
+
+function getUsersCount(){
+    $query = "SELECT COUNT(*) FROM `users` WHERE `users`.`is_deleted` = 0;";
+    $run_query = runQuery($query);
+    return mysqli_fetch_row($run_query)[0];
+}
+
+function getDepartmentsCount(){
+    $query = "SELECT COUNT(*) FROM `users` INNER JOIN `user_types` ON `users`.`user_type_id` = `user_types`.`user_type_id` WHERE `user_types`.`type` = 'department' AND `users`.`is_deleted` = 0;";
+    $run_query = runQuery($query);
+    return mysqli_fetch_row($run_query)[0];
 }
 
 
