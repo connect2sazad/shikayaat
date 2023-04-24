@@ -54,3 +54,17 @@ password: Sa@127.0.0.1
 
 
 Design Ref: https://demo.w3layouts.com/demos_new/template_demo/06-01-2018/glance_design_dashboard-demo_Free/215073379/web/index.html?_gl=1*e616v9*_ga*MTUzNTIzMDM5OC4xNjc5OTgzOTAw*_ga_EGV5GTJEP5*MTY3OTk4Mzg5OS4xLjAuMTY3OTk4Mzg5OS4wLjAuMA..*_ga_9HSZ46TKMQ*MTY3OTk4Mzg5OS4xLjEuMTY3OTk4Mzg5OS4wLjAuMA..&_ga=2.2773552.123946019.1679983900-1535230398.1679983900
+
+
+
+
+
+Gyming 6.30am to 8.30am
+Cleaning & Maintenance 8.30am to 9.00
+Personal Care 9.00am to 9.30am
+Office/Skills/Etc 9.30am to 5.30pm
+Driving/Cooking 5.30pm to 6.30pm
+IELTS/GRE/Interview Prep 6.30am to 8.30pm
+Gyming 8.30am to 9.30pm
+
+
