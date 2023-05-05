@@ -202,7 +202,7 @@ $pn = isset($_GET['pn']) ? $_GET['pn'] : '404';
         $last8months[$month_data] = $row['count'];
       }
     }
-    // print_r($last8months);
+    print_r($last8months);
 
 
     ?>

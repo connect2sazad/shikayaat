@@ -272,15 +272,11 @@ function getComplaintsCount(){
 function getComplaintDetails($refno){
     $query = WHERE('complaints', 'refno', $refno);
     $run_query = runQuery($query);
-    // if($run_query == null){
-    //     return array('status' => 'failed', 'message' => "No such Complaint found!");
-    // }
-    // $fetch = mysqli_fetch_assoc($run_query);
-    // if($fetch['is_deleted'] == 1){
-    //     return array('status' => 'failed', 'message' => "No such Complaint found!");
-    // }
-    // return $fetch;
-    return $run_query;
+    $fetch = mysqli_fetch_assoc($run_query);
+    if($fetch['is_deleted'] == 1){
+        $fetch = array("error" => "No such complaint found!");
+    }
+    return $fetch;
 }
 
 function last8MonthsComplaintsCounts(){
