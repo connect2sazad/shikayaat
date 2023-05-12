@@ -1,5 +1,9 @@
 <?php
 
+    if(!defined('CURRENT_TIME_ZONE')){
+        define('CURRENT_TIME_ZONE', 'Asia/Kolkata');
+    }
+
     if(!defined('___ABS_PATH___')) {
         define('___ABS_PATH___', __DIR__.'/');
     }
@@ -43,3 +47,5 @@
     if(!defined('NEWS_API')){
         define('NEWS_API', 'http://127.0.0.1/news_and_events/get-nae/');
     }
+
+    date_default_timezone_set(CURRENT_TIME_ZONE);

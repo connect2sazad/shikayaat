@@ -8,11 +8,13 @@
     $userid = $_SESSION[USER_GLOBAL_VAR];
     $refno = getRandomId(11, 'alpha_uppercase_numeric');
 
-    $title = isset($_POST['title']) ? $_POST['title'] : '';
-    $to_userid = isset($_POST['to_userid']) ? $_POST['to_userid'] : '';
-    $priorityid = isset($_POST['priorityid']) ? $_POST['priorityid'] : '';
-    $description = isset($_POST['description']) ? $_POST['description'] : '';
-    $suggestions = isset($_POST['suggestions']) ? $_POST['suggestions'] : '';
+    $conn = get_conn();
+
+    $title = isset($_POST['title']) ? mysqli_real_escape_string($conn, $_POST['title']) : '';
+    $to_userid = isset($_POST['to_userid']) ? mysqli_real_escape_string($conn, $_POST['to_userid']) : '';
+    $priorityid = isset($_POST['priorityid']) ? mysqli_real_escape_string($conn, $_POST['priorityid']) : '';
+    $description = isset($_POST['description']) ? mysqli_real_escape_string($conn, $_POST['description']) : '';
+    $suggestions = isset($_POST['suggestions']) ? mysqli_real_escape_string($conn, $_POST['suggestions']) : '';
 
     $responses = array();
     $reminders = array();
@@ -39,8 +41,8 @@
    $query = "INSERT INTO `complaints` (`refno`, `title`, `userid`, `to_userid`, `priorityid`, `description`, `suggestions`, `attachments`, `responses`, `reminders`, `status`) VALUES ('".$refno."', '".$title."', '".$userid."', '".$to_userid."', '".$priorityid."', '".$description."', '".$suggestions."', '".json_encode($attachmets)."', '".json_encode($responses)."', '".json_encode($reminders)."', 'pending');";
    $res = runQuery($query);
    if($res!=1){
-    echo "<h1>Unable to Add Complaint</h1>";
-    echo "<h2>Create an error page for this</h2>";
+    echo $query;
+    // header('location: ../../404.php');
    } else {
     header('location: ../../page/?pn=all-complaints');
    }

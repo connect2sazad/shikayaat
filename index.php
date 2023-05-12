@@ -35,7 +35,7 @@ $pn = isset($_GET['pn']) ? $_GET['pn'] : '404';
 
   <script>
     $.ajax({
-      url: '<?=NEWS_API?>?nc=6',
+      url: '<?= NEWS_API ?>?nc=6',
       method: 'GET',
       dataType: 'json',
       success: function(response) {
@@ -43,9 +43,9 @@ $pn = isset($_GET['pn']) ? $_GET['pn'] : '404';
         response.forEach(element => {
           // console.log(element.description);
           swiper_news += '<div class="swiper-slide">';
-          swiper_news += '<div class="news-title">'+element.title+'</div>';
-          swiper_news += '<div class="news-date">'+formatDate (element.updated_at)+'</div>';
-          swiper_news += '<div class="news-description">'+element.description+'</div>';
+          swiper_news += '<div class="news-title">' + element.title + '</div>';
+          swiper_news += '<div class="news-date">' + formatDate(element.updated_at) + '</div>';
+          swiper_news += '<div class="news-description">' + element.description + '</div>';
           swiper_news += '</div>';
         });
         console.log(swiper_news);
@@ -59,6 +59,24 @@ $pn = isset($_GET['pn']) ? $_GET['pn'] : '404';
 </head>
 
 <body>
+
+  <div class="loader-overlay">
+    <div class="loader-gate left-loader">
+      <div class="logo-left">
+        <img src="./assets/images/logo-left.png">
+      </div>
+    </div>
+
+    <div class="loader-gate right-loader">
+      <div class="logo-right">
+        <img src="./assets/images/logo-right.png">
+      </div>
+    </div>
+
+    <div class="shikayaat-name">
+      shikayaat
+    </div>
+  </div>
 
   <main>
     <div class="section-holder">

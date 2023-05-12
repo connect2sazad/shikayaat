@@ -63,7 +63,23 @@ if (!isset($_SESSION[USER_GLOBAL_VAR]) || !array_key_exists(USER_GLOBAL_VAR, $_S
 
 <body>
 
+    <div class="loader-overlay">
+        <div class="loader-gate left-loader">
+            <div class="logo-left">
+                <img src="./assets/images/logo-left.png">
+            </div>
+        </div>
 
+        <div class="loader-gate right-loader">
+            <div class="logo-right">
+                <img src="./assets/images/logo-right.png">
+            </div>
+        </div>
+
+        <div class="shikayaat-name">
+            shikayaat
+        </div>
+    </div>
 
 
 

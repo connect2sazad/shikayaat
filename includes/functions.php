@@ -195,16 +195,6 @@ function systemVariable($variable_name)
     return $fetch['value'];
 }
 
-// function getImage($image_name)
-// {
-//     // $query = "SELECT * FROM `images` WHERE `images`.`image_name` = '$image_name'";
-//     $query = WHERE('images', 'image_name', $image_name);
-//     $run_query = runQuery($query);
-//     $fetch = mysqli_fetch_assoc($run_query);
-//     return $fetch;
-// }
-
-
 function getComponent($component_name)
 {
     include_once ___INC___ . 'components/' . $component_name . ".php";
@@ -285,6 +275,26 @@ function last8MonthsComplaintsCounts(){
     return $run_query;
 }
 
+function getNameFromUserId($userid, $last_name = false){
+    $query = WHERE('users', 'userid', $userid);
+    $run_query = runQuery($query);
+    $fetch = mysqli_fetch_assoc($run_query);
+    $users_name = $fetch['first_name'];
+    if($last_name){
+        $users_name .= " ".$fetch['last_name'];
+    }
+    return $users_name;
+}
+
+function getPriorityNameFromPriorityId($priorityid){
+    $query = WHERE('priorities', 'priorityid', $priorityid);
+    $run_query = runQuery($query);
+    $fetch = mysqli_fetch_assoc($run_query);
+    $priority_name = $fetch['priority_name'];
+    return $priority_name;
+}
+
+
 
 
 if (!defined('SITE_HOME')) {
@@ -352,17 +362,11 @@ function getDepartmentsCount(){
     return mysqli_fetch_row($run_query)[0];
 }
 
-
-// function adminVariable($variable_name)
-// {
-//     // if (session_status() === PHP_SESSION_NONE) {
-//     //     session_start();
-//     // }
-//     $query = WHERE('admins', 'user_auth', $_SESSION[USER_GLOBAL_VAR]);
-//     $run_query = runQuery($query);
-//     $fetch = mysqli_fetch_assoc($run_query);
-//     return $fetch[$variable_name];
-// }
+function getRemindersByRefno($refno){
+    $query = WHERE('reminders', 'refno', $refno);
+    $run_query = runQuery($query);
+    return $run_query;
+}
 
 
 // function createQueryForSEO($object, $table_name, $id)
@@ -571,7 +575,41 @@ function login($request)
     return $response;
 }
 
+function change_ticket_status($request){
+    
+    $query = "UPDATE `complaints` SET `status` = '".$request['status']."' WHERE `complaints`.`refno` = '".$request['refno']."';";
+    $run_query = runQuery($query);
 
+    $response = array();
+
+    if($run_query){
+        $response['status'] = 'success';
+        $response['message'] = "Status Update Successfull!";
+    } else {
+        $response['status'] = 'failed';
+        $response['message'] = "Status Update Failed!";
+    }
+
+    return $response;
+}
+
+function remind_ticket($request){
+
+    $query = "INSERT INTO `reminders` (`refno`) VALUES ('".$request['refno']."');";
+    $run_query = runQuery($query);
+
+    $response = array();
+
+    if($run_query){
+        $response['status'] = 'success';
+        $response['message'] = "Reminder Added Successfully! Next Reminder can be sent after next 48 hours!";
+    } else {
+        $response['status'] = 'failed';
+        $response['message'] = "Reminder Failed!";
+    }
+
+    return $response;
+}
 
 
 

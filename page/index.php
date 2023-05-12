@@ -39,6 +39,24 @@ $pn = isset($_GET['pn']) ? $_GET['pn'] : '404';
 
 <body>
 
+  <div class="loader-overlay">
+    <div class="loader-gate left-loader">
+      <div class="logo-left">
+        <img src="../assets/images/logo-left.png">
+      </div>
+    </div>
+
+    <div class="loader-gate right-loader">
+      <div class="logo-right">
+        <img src="../assets/images/logo-right.png">
+      </div>
+    </div>
+
+    <div class="shikayaat-name">
+      shikayaat
+    </div>
+  </div>
+
   <main>
     <?= getComponent('header') ?>
     <div class="section-holder">

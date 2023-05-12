@@ -1,5 +1,5 @@
 <div class="content-wrapper">
-    <div class="card full-width">
+    <div class="card">
 
         <h1 class="card-heading">Sales</h1>
 

@@ -2,7 +2,8 @@
 
     /* colors */
     --body-bg: #355C7D;
-    --header-bg: #7745DB;
+    /* --header-bg: #7745DB; */
+    --header-bg: #0737a0;
     --body-moz-bg: -moz-linear-gradient(to right, #C06C84, #6C5B7B, #355C7D);
     --body-webkit-bg: -webkit-linear-gradient(to right, #C06C84, #6C5B7B, #355C7D);
     --body-gradient-bg: linear-gradient(to right, #C06C84, #6C5B7B, #355C7D);
