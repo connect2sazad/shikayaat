@@ -108,7 +108,7 @@ if (!isset($_SESSION[USER_GLOBAL_VAR]) || !array_key_exists(USER_GLOBAL_VAR, $_S
                                             welcome
                                         </div>
                                         <div class="message-text">
-                                            Sign in <br />
+                                            Sign in or Register<br />
                                             to continue access
                                         </div>
                                     </div>
@@ -131,8 +131,12 @@ if (!isset($_SESSION[USER_GLOBAL_VAR]) || !array_key_exists(USER_GLOBAL_VAR, $_S
                                         <label for="password">Password</label>
                                         <input type="password" id="password" name="password" autocomplete="off" spellcheck="false" required aria-required="true">
                                     </div>
-                                    <div class="input-control">
-                                        <input type="submit" class="submit-btn" value="Log In" />
+                                    <div class="input-control login-register">
+                                        <button type="submit">Log In</button>
+                                        <button type="button" onclick="window.location.href='./register/'">Register</button>
+                                    </div>
+                                    <div class="input-control login-register">
+                                        <button type="button" onclick="window.location.href='./register/check/'">Check Registration Request</button>
                                     </div>
                                 </form>
                             </div>
@@ -161,3 +165,7 @@ if (!isset($_SESSION[USER_GLOBAL_VAR]) || !array_key_exists(USER_GLOBAL_VAR, $_S
 <?php
 ob_end_flush();
 ?>
+
+
+
+

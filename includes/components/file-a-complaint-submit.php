@@ -5,7 +5,7 @@
     
     session_start();
 
-    $userid = $_SESSION[USER_GLOBAL_VAR];
+    $from_userid = $_SESSION[USER_GLOBAL_VAR];
     $refno = getRandomId(11, 'alpha_uppercase_numeric');
 
     $conn = get_conn();
@@ -16,8 +16,6 @@
     $description = isset($_POST['description']) ? mysqli_real_escape_string($conn, $_POST['description']) : '';
     $suggestions = isset($_POST['suggestions']) ? mysqli_real_escape_string($conn, $_POST['suggestions']) : '';
 
-    $responses = array();
-    $reminders = array();
     $status = 'pending';
     $attachmets = array();
 
@@ -38,11 +36,11 @@
     
    }
 
-   $query = "INSERT INTO `complaints` (`refno`, `title`, `userid`, `to_userid`, `priorityid`, `description`, `suggestions`, `attachments`, `responses`, `reminders`, `status`) VALUES ('".$refno."', '".$title."', '".$userid."', '".$to_userid."', '".$priorityid."', '".$description."', '".$suggestions."', '".json_encode($attachmets)."', '".json_encode($responses)."', '".json_encode($reminders)."', 'pending');";
+   $query = "INSERT INTO `complaints` (`refno`, `title`, `userid`, `to_userid`, `priorityid`, `description`, `suggestions`, `attachments`, `status`) VALUES ('".$refno."', '".$title."', '".$from_userid."', '".$to_userid."', '".$priorityid."', '".$description."', '".$suggestions."', '".json_encode($attachmets)."', 'pending');";
    $res = runQuery($query);
    if($res!=1){
-    echo $query;
-    // header('location: ../../404.php');
+    // echo $query;
+    header('location: ../../404.php');
    } else {
     header('location: ../../page/?pn=all-complaints');
    }

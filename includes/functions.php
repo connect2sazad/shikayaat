@@ -221,77 +221,116 @@ function is_trashed_or_deleted($any_row)
 }
 
 // tentative function
-function getDirectingAuthoritiesList(){
-    $query = SELECT('users')." WHERE `users`.`user_type_id` != 2 AND `users`.`user_type_id` != 6;";
+function getDirectingAuthoritiesList()
+{
+    $query = SELECT('users') . " WHERE `users`.`user_type_id` != 2 AND `users`.`user_type_id` != 6;";
     $run_query = runQuery($query);
     return $run_query;
 }
 
 // tentative function
-function getPrioritiesList(){
+function getPrioritiesList()
+{
     $query = SELECT('priorities');
     $run_query = runQuery($query);
     return $run_query;
 }
 
-function getPriorityColor($priority_id){
+function getPriorityColor($priority_id)
+{
     $query = WHERE('priorities', 'priorityid', $priority_id);
     $run_query = runQuery($query);
     $fetch = mysqli_fetch_assoc($run_query);
     return $fetch['color'];
 }
 
-function getPriorityCounts($priority_id){
-    $query = "SELECT COUNT(*) FROM `complaints` WHERE `complaints`.`priorityid` = '".$priority_id."';";
+function getPriorityCounts($priority_id)
+{
+    $query = "SELECT COUNT(*) FROM `complaints` WHERE `complaints`.`priorityid` = '" . $priority_id . "';";
     $run_query = runQuery($query);
     return mysqli_fetch_assoc($run_query);
 }
 
-function getComplaintsList(){
-    $query = WHERE('complaints', 'is_deleted', 0)." ORDER BY `id` DESC;";
+function getComplaintsList()
+{
+    $query = WHERE('complaints', 'is_deleted', 0) . " ORDER BY `id` DESC;";
     $run_query = runQuery($query);
     return $run_query;
 }
 
-function getComplaintsCount(){
+function getComplaintsListWithUser($current_user)
+{
+    // $query = WHERE('complaints', 'is_deleted', 0) . " ORDER BY `id` DESC;";
+    $query = "SELECT * FROM `complaints` WHERE `complaints`.`is_deleted` = 0 AND (`userid` = '".$current_user."' OR `to_userid` = '".$current_user."') ORDER BY `id` DESC;";
+    $run_query = runQuery($query);
+    return $run_query;
+}
+
+function getComplaintsCount()
+{
     $query = "SELECT COUNT(*) FROM `complaints` WHERE `complaints`.`is_deleted` = 0;";
     $run_query = runQuery($query);
     return mysqli_fetch_row($run_query)[0];
 }
 
-function getComplaintDetails($refno){
+function getComplaintDetails($refno)
+{
     $query = WHERE('complaints', 'refno', $refno);
     $run_query = runQuery($query);
     $fetch = mysqli_fetch_assoc($run_query);
-    if($fetch['is_deleted'] == 1){
+    if ($fetch['is_deleted'] == 1) {
         $fetch = array("error" => "No such complaint found!");
     }
     return $fetch;
 }
 
-function last8MonthsComplaintsCounts(){
+function last8MonthsComplaintsCounts()
+{
     $query = "SELECT YEAR(`created_at`) as year, MONTH(`created_at`) as month, COUNT(*) as count FROM `complaints` WHERE `created_at` >= DATE_SUB(NOW(), INTERVAL 8 MONTH) GROUP BY YEAR(`created_at`), MONTH(`created_at`) ORDER BY year DESC, month DESC;";
     $run_query = runQuery($query);
     return $run_query;
 }
 
-function getNameFromUserId($userid, $last_name = false){
+function getNameFromUserId($userid, $last_name = false)
+{
     $query = WHERE('users', 'userid', $userid);
     $run_query = runQuery($query);
     $fetch = mysqli_fetch_assoc($run_query);
     $users_name = $fetch['first_name'];
-    if($last_name){
-        $users_name .= " ".$fetch['last_name'];
+    if ($last_name) {
+        $users_name .= " " . $fetch['last_name'];
     }
     return $users_name;
 }
 
-function getPriorityNameFromPriorityId($priorityid){
+function getPriorityNameFromPriorityId($priorityid)
+{
     $query = WHERE('priorities', 'priorityid', $priorityid);
     $run_query = runQuery($query);
     $fetch = mysqli_fetch_assoc($run_query);
     $priority_name = $fetch['priority_name'];
     return $priority_name;
+}
+
+function getResponsesByRefno($refno)
+{
+    $query = WHERE('responses', 'refno', $refno);
+    $run_query = runQuery($query);
+    return $run_query;
+}
+
+function getAllUserTypes()
+{
+    $query = SELECT('user_types');
+    $run_query = runQuery($query);
+    return $run_query;
+}
+
+function getUserTypeNameByUserTypeId($user_type_id)
+{
+    $query = WHERE('user_types', 'user_type_id', $user_type_id);
+    $run_query = runQuery($query);
+    return mysqli_fetch_assoc($run_query)['user_type_name'];
 }
 
 
@@ -350,22 +389,55 @@ if (!defined('___ADMIN_DIR___')) {
     define('___ADMIN_DIR___', SITE_DIR . 'admin/');
 }
 
-function getUsersCount(){
+function getUsersCount()
+{
     $query = "SELECT COUNT(*) FROM `users` WHERE `users`.`is_deleted` = 0;";
     $run_query = runQuery($query);
     return mysqli_fetch_row($run_query)[0];
 }
 
-function getDepartmentsCount(){
+function getDepartmentsCount()
+{
     $query = "SELECT COUNT(*) FROM `users` INNER JOIN `user_types` ON `users`.`user_type_id` = `user_types`.`user_type_id` WHERE `user_types`.`type` = 'department' AND `users`.`is_deleted` = 0;";
     $run_query = runQuery($query);
     return mysqli_fetch_row($run_query)[0];
 }
 
-function getRemindersByRefno($refno){
+function getRemindersByRefno($refno)
+{
     $query = WHERE('reminders', 'refno', $refno);
     $run_query = runQuery($query);
     return $run_query;
+}
+
+function getRequestsByStatus($status)
+{
+    $query = WHERE('requests', 'status', $status);
+    $run_query = runQuery($query);
+    return $run_query;
+}
+
+function getRequestsByRequestRefNo($request_refno)
+{
+    $query = WHERE('requests', 'request_refno', $request_refno);
+    $run_query = runQuery($query);
+    return $run_query;
+}
+
+function getUserByEmail($email){
+    $query = WHERE('users', 'email', $email);
+    $run_query = runQuery($query);
+    return $run_query;
+}
+
+function getUserByUserid($userid){
+    $query = WHERE('users', 'userid', $userid);
+    $run_query = runQuery($query);
+    return $run_query;
+}
+
+function getCurrentUser(){
+    return mysqli_fetch_assoc(getUserByUserid($_SESSION[USER_GLOBAL_VAR]));
 }
 
 
@@ -485,7 +557,7 @@ function getAjaxRequester()
             function ajax_request(data, is_serialized = true) {
 
                 const api_url = \"" . SITE_DIR . "includes/api.php\";
-                const api_key = \"".md5('MTDNG-PDDGD-MHMV4-F2MBY-RCXKK')."\";
+                const api_key = \"" . md5('MTDNG-PDDGD-MHMV4-F2MBY-RCXKK') . "\";
             
             
                 data += \"&api_key=\" + api_key;
@@ -575,14 +647,41 @@ function login($request)
     return $response;
 }
 
-function change_ticket_status($request){
-    
-    $query = "UPDATE `complaints` SET `status` = '".$request['status']."' WHERE `complaints`.`refno` = '".$request['refno']."';";
+function register($request)
+{
+
+    $query = "INSERT INTO `users` (`first_name`, `last_name`, `userid`, `email`, `password`, `user_type_id`) VALUES ('" . $request['first_name'] . "', '" . $request['last_name'] . "', '" . $request['userid'] . "', '" . $request['email'] . "', '" . password_hash($request['password'], PASSWORD_DEFAULT) . "', '" . $request['user_type_id'] . "');";
+    $run_query = runQuery($query);
+
+    $request_refno = 'REQ'.getRandomId(8, 'alpha_uppercase_numeric');
+
+    $query2 = "INSERT INTO `requests` (`request_type`, `email`, `user_type_id`, `request_refno`) VALUES ('registration', '" . $request['email'] . "', '" . $request['user_type_id'] . "', '" . $request_refno . "');";
+    $run_query2 = runQuery($query2);
+
+    $response = array();
+
+    if ($run_query && $run_query2) {
+        $response['status'] = 'success';
+        $response['message'] = "Registration Request Sent Successfull!";
+        $response['request_refno'] = $request_refno;
+    } else {
+        $response['status'] = 'failed';
+        $response['message'] = "Registration Request Failed!";
+        $response['request_refno'] = '';
+    }
+
+    return $response;
+}
+
+function change_ticket_status($request)
+{
+
+    $query = "UPDATE `complaints` SET `complaints`.`status` = '" . $request['status'] . "' WHERE `complaints`.`refno` = '" . $request['refno'] . "';";
     $run_query = runQuery($query);
 
     $response = array();
 
-    if($run_query){
+    if ($run_query) {
         $response['status'] = 'success';
         $response['message'] = "Status Update Successfull!";
     } else {
@@ -593,14 +692,15 @@ function change_ticket_status($request){
     return $response;
 }
 
-function remind_ticket($request){
+function remind_ticket($request)
+{
 
-    $query = "INSERT INTO `reminders` (`refno`) VALUES ('".$request['refno']."');";
+    $query = "INSERT INTO `reminders` (`refno`) VALUES ('" . $request['refno'] . "');";
     $run_query = runQuery($query);
 
     $response = array();
 
-    if($run_query){
+    if ($run_query) {
         $response['status'] = 'success';
         $response['message'] = "Reminder Added Successfully! Next Reminder can be sent after next 48 hours!";
     } else {
@@ -611,7 +711,125 @@ function remind_ticket($request){
     return $response;
 }
 
+function check_userid_existence($request)
+{
+    $query = WHERE('users', 'userid', $request['userid']);
+    $run_query = runQuery($query);
+    $rows = mysqli_num_rows($run_query);
 
+    $response = array();
+
+    if ($run_query) {
+        if ($rows > 0) {
+            $response['status'] = 'success';
+            $response['userid_exists'] = 'yes';
+            $response['message'] = "User Id already exists!";
+        } else {
+            $response['status'] = 'success';
+            $response['userid_exists'] = 'no';
+            $response['message'] = "User Id available!";
+        }
+    } else {
+        $response['status'] = 'failed';
+        $response['message'] = "Unable to check the userid existence!";
+    }
+
+    return $response;
+}
+
+function check_email_existence($request)
+{
+
+    $query = WHERE('users', 'email', $request['email']);
+    $run_query = runQuery($query);
+    $rows = mysqli_num_rows($run_query);
+
+    $response = array();
+
+    if ($run_query) {
+        if ($rows > 0) {
+            $response['status'] = 'success';
+            $response['email_exists'] = 'yes';
+            $response['message'] = "Email Id already exists!";
+        } else {
+            $response['status'] = 'success';
+            $response['email_exists'] = 'no';
+            $response['message'] = "Email Id available!";
+        }
+    } else {
+        $response['status'] = 'failed';
+        $response['message'] = "Unable to check the email existence!";
+    }
+
+    return $response;
+}
+
+function check_request_status($request)
+{
+
+    $query = "SELECT * FROM `requests` WHERE `email` = '" . $request['email'] . "'OR `request_refno` = '" . $request['email'] . "' AND `request_type` = '" . $request['status_request_type'] . "';";
+    $run_query = runQuery($query);
+    $row_count = mysqli_num_rows($run_query);
+
+    $response = array();
+
+    if ($run_query) {
+        if ($row_count > 0) {
+
+            mysqli_data_seek($run_query, $row_count - 1);
+            $last_row = mysqli_fetch_assoc($run_query);
+
+            $response['status'] = 'success';
+            $response['request_status'] = $last_row['status'];
+            $response['message'] = 'Your request is ' . $last_row['status'];
+            $response['description'] = $last_row['description'];
+        } else {
+            $response['status'] = 'success';
+            $response['request_status'] = 'not_found';
+            $response['message'] = 'No such request found!';
+            $response['description'] = 'No such request found!';
+        }
+    } else {
+        $response['status'] = 'failed';
+        $response['request_status'] = 'failed';
+        $response['message'] = 'Unable to check the request status!';
+    }
+
+    return $response;
+}
+
+
+function change_request_status($request){
+
+    $query = "UPDATE `requests` SET `requests`.`status` = '" . $request['new_status'] . "' WHERE `requests`.`request_refno` = '" . $request['request_refno'] . "';";
+    $run_query = runQuery($query);
+
+    $user_email = getRequestsByRequestRefNo($request['request_refno']);
+    $fetch_user = mysqli_fetch_assoc($user_email);
+
+    if($request['new_status']=='approved'){
+        $is_active = '1';
+    } else {
+        $is_active = '0';
+    }
+    
+    $query2 = "UPDATE `users` SET `users`.`is_active` = ".$is_active." WHERE `users`.`email` = '" . $fetch_user['email'] . "';";
+    $run_query2 = runQuery($query2);
+
+    $response = array();
+
+    
+    if($run_query && $run_query2){
+        $response['status'] = 'success';
+        $response['message'] = 'Status Change Successful!';
+    } else {
+        $response['status'] = 'failed';
+        $response['message'] = 'Status Change Failed!';
+    }
+    
+    return $response;
+
+}
 
 
 
@@ -731,4 +949,9 @@ function json_validator($data)
             is_array(json_decode($data, true)) ? true : false;
     }
     return false;
+}
+
+function protect_dir()
+{
+    header('location: ' . SITE_HOME);
 }

@@ -68,12 +68,12 @@ main {
     width: 100% !important;
 }
 
-.m-0{
-    margin: 0!important;
+.m-0 {
+    margin: 0 !important;
 }
 
-.p-0{
-    padding: 0!important;
+.p-0 {
+    padding: 0 !important;
 }
 
 .row {
@@ -103,6 +103,11 @@ main {
 .column-50 {
     height: 100%;
     width: 50%;
+}
+
+.column-100, .column {
+    height: 100%;
+    width: 100%;
 }
 
 .column-40 {
@@ -199,7 +204,21 @@ main {
     justify-content: center;
 }
 
-.input-control:last-child{
+.input-control-row {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    margin-bottom: 25px;
+}
+
+.input-control-row .input-control {
+    width: 48%;
+    margin: 0;
+}
+
+.input-control:last-child {
     margin-bottom: 0;
 }
 
@@ -240,7 +259,7 @@ main {
     outline: none;
 }
 
-.input-control input[type=submit], button {
+.input-control input[type=submit] {
     margin-top: 20px;
     width: max-content;
     padding: 10px 30px;
@@ -260,14 +279,133 @@ main {
     display: none;
 }
 
-.attachments-container{
+.input-control button {
+    align-items: center;
+    background-color: #06f;
+    border: 2px solid #06f;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-flex;
+    fill: #000;
+    font-family: Inter, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    height: 48px;
+    justify-content: center;
+    letter-spacing: -.8px;
+    line-height: 24px;
+    min-width: 140px;
+    outline: 0;
+    padding: 0 17px;
+    text-align: center;
+    text-decoration: none;
+    transition: all .3s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    margin-top: 20px;
+}
+
+.input-control button:hover {
+    background-color: #3385ff;
+    border-color: #3385ff;
+    fill: #06f;
+}
+
+.request-action-btns{
+    display: flex;
+    flex-direction: row;
+}
+
+.request-action-btns button{
+    align-items: center;
+    background-color: #06f;
+    border: 2px solid #06f;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-flex;
+    fill: #000;
+    font-family: Inter, sans-serif;
+    font-size: 16px;
+    /* font-weight: 600; */
+    height: auto;
+    justify-content: center;
+    line-height: 24px;
+    min-width: 140px;
+    outline: 0;
+    padding: 0 10px;
+    text-align: center;
+    text-decoration: none;
+    transition: all .3s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.request-action-btns .bg-red{
+    background-color: red;
+    border: 2px solid red;
+}
+
+.request-action-btns button:hover {
+    background-color: #3385ff;
+    border-color: #3385ff;
+    fill: #06f;
+}
+
+.request-action-btns .bg-red:hover {
+    background-color: #da4646;
+    border-color: #da4646;
+    fill: red;
+}
+
+.login-register {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.login-register-single button {
+    width: max-content;
+    margin-top: 0 !important;
+}
+
+#userid-msg {
+    margin-top: 10px;
+    color: red;
+    display: none;
+}
+
+#email-msg {
+    margin-top: 10px;
+    color: red;
+    display: none;
+}
+
+.fd-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.action-buttons {
+    /* background-color: #5e5b5b; */
+    width: max-content;
+    margin-right: 20px !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.attachments-container {
     width: 100%;
     height: auto;
     display: flex;
     flex-wrap: wrap;
 }
 
-.attachments-container .another-file{
+.attachments-container .another-file {
     height: 150px;
     width: 150px;
     overflow-y: hidden;
@@ -278,20 +416,20 @@ main {
     margin-left: 30px;
 }
 
-.attachments-container .another-file:first-child{
+.attachments-container .another-file:first-child {
     margin-left: 0;
 }
 
-.attachments-container .another-file .file-name{
+.attachments-container .another-file .file-name {
     margin-top: 10px;
 }
 
-.attachments-container .another-file .file-name a{
+.attachments-container .another-file .file-name a {
     text-decoration: none;
     color: black;
 }
 
-.attachments-container .another-file img{
+.attachments-container .another-file img {
     height: 100px;
     width: 100px;
 }
@@ -324,7 +462,7 @@ main {
     text-decoration: underline;
 }
 
-.card-heading span{
+.card-heading span {
     display: block;
     font-size: 15px;
     display: flex;
@@ -512,6 +650,7 @@ ul.control-menu-list li a {
     overflow: hidden;
     overflow-y: auto;
 }
+
 /* RIGHT CONTENT End */
 
 
@@ -531,6 +670,24 @@ ul.control-menu-list li a {
     width: 100%;
 }
 
+.width-70 {
+    width: 70% !important;
+}
+
+.width-60 {
+    width: 60% !important;
+}
+
+.register-form {
+    width: 70% !important;
+    height: auto !important;
+    margin: 10px !important;
+}
+
+.height-auto {
+    height: auto;
+}
+
 /* table design */
 .styled-table {
     border-collapse: collapse;
@@ -542,6 +699,7 @@ ul.control-menu-list li a {
     padding: 8px;
     text-align: left;
     border-bottom: 1px solid #ddd;
+    vertical-align: middle;
 }
 
 .styled-table th {
@@ -557,7 +715,7 @@ ul.control-menu-list li a {
 .styled-table>tbody>tr>td {
     padding: 8px;
     line-height: 1.42857143;
-    vertical-align: top;
+    vertical-align: middle;
     border-top: 1px solid #ddd;
 }
 
@@ -773,8 +931,51 @@ ul.control-menu-list li a {
 }
 
 
-.reminder-status{
+.reminder-status {
     margin-top: 20px;
     color: red;
     font-weight: bold;
+}
+
+.response-section {
+    height: 200px;
+    width: 100%;
+    background-color: #2e2626;
+}
+
+.tab-container {
+    width: 100%;
+    margin: 0 auto;
+    height: auto;
+}
+
+.tab-header {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+}
+
+.tab-button {
+    /* flex: 1; */
+    padding: 10px 20px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: #0737A0;
+    width: max-content;
+    background-color: transparent;
+}
+
+.tab-button.active {
+    /* background-color: #0737A0; */
+    border-bottom: 2px solid #0737A0;
+}
+
+.tab-panel {
+    display: none;
+    padding: 10px;
+}
+
+.tab-panel.active {
+    display: block;
 }

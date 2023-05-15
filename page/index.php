@@ -12,7 +12,15 @@ if (!isset($_SESSION[USER_GLOBAL_VAR]) || !array_key_exists(USER_GLOBAL_VAR, $_S
 
 $pn = isset($_GET['pn']) ? $_GET['pn'] : '404';
 
+if($pn != '404'){
+  $local_title = str_replace("-", " ", $pn);
+  $local_title = ucwords($local_title).' - ';
+} else {
+  $local_title = 'Error - ';
+}
+
 // ob_start("minifier");
+ob_start();
 
 ?>
 
@@ -22,7 +30,7 @@ $pn = isset($_GET['pn']) ? $_GET['pn'] : '404';
 <head>
 
   <?= loadMetaData() ?>
-  <?= loadTitleAndFavicon('The Digital Complaint Platform') ?>
+  <?= loadTitleAndFavicon($local_title.'The Digital Complaint Platform') ?>
   <?= loadStyleSheets() ?>
   <?= loadScripts() ?>
   <?= getAjaxRequester() ?>
@@ -34,6 +42,7 @@ $pn = isset($_GET['pn']) ? $_GET['pn'] : '404';
       plugins: 'autolink lists link image',
       toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright | bullist numlist outdent indent | link image'
     });
+    $('.tox-notifications-container').remove()
   </script>
 </head>
 

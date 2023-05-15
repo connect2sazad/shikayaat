@@ -52,7 +52,10 @@ function get_sidebar($selected_menu = 'home')
             <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" style="user-select: auto;"></path>
             <polyline points="16 17 21 12 16 7" style="user-select: auto;"></polyline>
             <line x1="21" y1="12" x2="9" y2="12" style="user-select: auto;"></line>
-            </svg>'
+            </svg>',
+        'requests' => '<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.7099 1.29L13.7099 4.29L13.9999 5V14L12.9999 15H3.99994L2.99994 14V2L3.99994 1H9.99994L10.7099 1.29ZM3.99994 14H12.9999V5L9.99994 2H3.99994V14ZM8 6H6V7H8V9H9V7H11V6H9V4H8V6ZM6 11H11V12H6V11Z"></path></svg>',
+        'users' => '<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" aria-hidden="true" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M4.5 6.375a4.125 4.125 0 118.25 0 4.125 4.125 0 01-8.25 0zM14.25 8.625a3.375 3.375 0 116.75 0 3.375 3.375 0 01-6.75 0zM1.5 19.125a7.125 7.125 0 0114.25 0v.003l-.001.119a.75.75 0 01-.363.63 13.067 13.067 0 01-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 01-.364-.63l-.001-.122zM17.25 19.128l-.001.144a2.25 2.25 0 01-.233.96 10.088 10.088 0 005.06-1.01.75.75 0 00.42-.643 4.875 4.875 0 00-6.957-4.611 8.586 8.586 0 011.71 5.157v.003z"></path></svg>',
+        'user-types' => '<svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M14 4h6v6h-6z"></path><path d="M4 14h6v6h-6z"></path><path d="M17 17m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path><path d="M7 7m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path></svg>',
     );
 
     echo '<section class="left-nav-section" id="left-nav-section"><ul>';
@@ -60,6 +63,11 @@ function get_sidebar($selected_menu = 'home')
     echo sidebar_menu_item('File a Complaint', SITE_HOME . 'page/?pn=file-a-complaint', $icons['file-a-complaint'], $selected_menu == 'file-a-complaint');
     echo sidebar_menu_item('All Complaints', SITE_HOME . 'page/?pn=all-complaints', $icons['all-complaints'], $selected_menu == 'all-complaints');
     echo sidebar_menu_item('Search Complaint', SITE_HOME . 'page/?pn=search-complaint', $icons['search-complaint'], $selected_menu == 'search-complaint');
+    if(getCurrentUser()['user_type_id'] == 1){
+        echo sidebar_menu_item('Requests', SITE_HOME . 'page/?pn=requests', $icons['requests'], $selected_menu == 'requests');
+        echo sidebar_menu_item('Users', SITE_HOME . 'page/?pn=users', $icons['users'], $selected_menu == 'users');
+        echo sidebar_menu_item('User Types', SITE_HOME . 'page/?pn=user-types', $icons['user-types'], $selected_menu == 'user-types');
+    }
     echo sidebar_menu_item('Settings', SITE_HOME . 'page/?pn=settings', $icons['settings'], $selected_menu == 'settings');
     echo sidebar_menu_item('Support', SITE_HOME . 'page/?pn=support', $icons['support'], $selected_menu == 'support');
     echo sidebar_menu_item('Sales', SITE_HOME . 'page/?pn=sales', $icons['sales'], $selected_menu == 'sales');

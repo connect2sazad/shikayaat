@@ -38,20 +38,30 @@
                 </thead>
                 <tbody>
                     <?php
-                    $complaints_list = getComplaintsList();
+                    $current_user = $_SESSION[USER_GLOBAL_VAR];
+                    $current_user_type = getCurrentUser();
+                    if($current_user_type['user_type_id'] == 1){
+                        $complaints_list = getComplaintsList();
+                    } else {
+                        $complaints_list = getComplaintsListWithUser($_SESSION[USER_GLOBAL_VAR]);
+                    }
                     if (mysqli_num_rows($complaints_list) > 0) {
                         while ($row = mysqli_fetch_assoc($complaints_list)) {
-                            $get_tr_color = $row['priorityid'];
-                            $get_tr_color = getPriorityColor($get_tr_color);
-                            echo '<tr class="' . $row['status'] . '" style="background-color: #' . $get_tr_color . '">';
-                            echo '<td><a href="./?pn=complain-details&refno=' . $row['refno'] . '">' . $row['refno'] . '</a></td>';
-                            echo '<td><a href="./?pn=complain-details&refno=' . $row['refno'] . '">' . $row['title'] . '</a></td>';
-                            echo '<td>' . $row['to_userid'] . '</td>';
-                            echo '<td><a href="'.SITE_DIR.'page/?pn=all-complaints&pid=' . $row['priorityid'] . '">' . $row['priorityid'] . '</a></td>';
-                            echo '<td>' . date_format(date_create($row['created_at']), 'M d, Y - h:i a') . '</td>';
-                            echo '<td>' . $row['status'] . '</td>';
-                            echo '</tr>';
+                            // if($row['userid'] == $_SESSION[USER_GLOBAL_VAR] || $row['to_userid'] == $_SESSION[USER_GLOBAL_VAR]){
+                                $get_tr_color = $row['priorityid'];
+                                $get_tr_color = getPriorityColor($get_tr_color);
+                                echo '<tr class="' . $row['status'] . '" style="background-color: #' . $get_tr_color . '">';
+                                echo '<td><a href="./?pn=complain-details&refno=' . $row['refno'] . '">' . $row['refno'] . '</a></td>';
+                                echo '<td><a href="./?pn=complain-details&refno=' . $row['refno'] . '">' . $row['title'] . '</a></td>';
+                                echo '<td>' . $row['to_userid'] . '</td>';
+                                echo '<td><a href="'.SITE_DIR.'page/?pn=all-complaints&pid=' . $row['priorityid'] . '">' . $row['priorityid'] . '</a></td>';
+                                echo '<td>' . date_format(date_create($row['created_at']), 'M d, Y - h:i a') . '</td>';
+                                echo '<td>' . $row['status'] . '</td>';
+                                echo '</tr>';
+                            // }
                         }
+                    } else {
+                        echo '<tr><td colspan="6">No complaints found!</td></tr>';
                     }
                     ?>
 

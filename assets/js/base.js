@@ -64,3 +64,17 @@ if (nav_style == 'collapsed') {
 
     localStorage.setItem('nav-style', 'collapsed');
 }
+
+
+$(document).ready(function () {
+    $('.tab-button').click(function () {
+        var tabId = $(this).data('tab');
+        $('.tab-button').removeClass('active');
+        $(this).addClass('active');
+        $('.tab-panel').removeClass('active');
+        $('#' + tabId).addClass('active');
+    });
+
+    $('.tab-button:first').click(); 
+
+});

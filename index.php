@@ -48,7 +48,7 @@ $pn = isset($_GET['pn']) ? $_GET['pn'] : '404';
           swiper_news += '<div class="news-description">' + element.description + '</div>';
           swiper_news += '</div>';
         });
-        console.log(swiper_news);
+        // console.log(swiper_news);
         $('#swiper-news').html(swiper_news);
       },
       error: function(error) {
