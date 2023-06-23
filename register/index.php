@@ -40,9 +40,15 @@ if (!isset($_SESSION[USER_GLOBAL_VAR]) || !array_key_exists(USER_GLOBAL_VAR, $_S
                             position: "right",
                             backgroundColor: "#4fbe87",
                         }).showToast();
-                        // alert('fssd')
 
                         // window.location.href = "./";
+                        $('#shikayaat_register').remove();
+                        var status = '<div class="input-control">';
+                        status += '<label for="title">Status</label>'
+                        status += '<div class="readonly" id="status-field">Registration Request Sent Successfully! <br/> Kindly Note the Reference No for easy tracking! Your request reference no is <strong>'+response.request_refno+'</strong>.<br>'
+                        status += '<a href="./check?refno='+response.request_refno+'">Click here</a> to track request!</div></div>';
+                        $('#form-wrapper').html(status);
+
 
                     } else {
                         Toastify({
@@ -90,7 +96,7 @@ if (!isset($_SESSION[USER_GLOBAL_VAR]) || !array_key_exists(USER_GLOBAL_VAR, $_S
                     <div class="column">
                         <div class="form-container bg-grey border-radius">
                             <div class="form-heading">Register</div>
-                            <div>
+                            <div id="form-wrapper">
                                 <form id="shikayaat_register" method="POST" autocomplete="off">
                                     <div class="input-control">
                                         <label for="user_type">User Type*</label>

@@ -9,6 +9,12 @@ if (!isset($_SESSION[USER_GLOBAL_VAR]) || !array_key_exists(USER_GLOBAL_VAR, $_S
     header('location: .');
 }
 
+if(isset($_GET['uid'])){
+    $uid = base64_decode($_GET['uid']);
+} else {
+    $uid = " ";
+}
+
 // ob_start("minifier");
 ?>
 <!DOCTYPE html>
@@ -124,8 +130,8 @@ if (!isset($_SESSION[USER_GLOBAL_VAR]) || !array_key_exists(USER_GLOBAL_VAR, $_S
                             <div>
                                 <form id="shikayaat_login" method="POST">
                                     <div class="input-control">
-                                        <label for="userid">User Id</label>
-                                        <input type="text" id="userid" name="userid" autocomplete="off" spellcheck="false" required aria-required="true">
+                                        <label for="userid">User Id or Email</label>
+                                        <input type="text" id="userid" name="userid" autocomplete="off" spellcheck="false" value="<?=$uid?>" required aria-required="true">
                                     </div>
                                     <div class="input-control">
                                         <label for="password">Password</label>
@@ -134,6 +140,7 @@ if (!isset($_SESSION[USER_GLOBAL_VAR]) || !array_key_exists(USER_GLOBAL_VAR, $_S
                                     <div class="input-control login-register">
                                         <button type="submit">Log In</button>
                                         <button type="button" onclick="window.location.href='./register/'">Register</button>
+                                        <button type="button" onclick="window.location.href='./change-password/forgot/'">Forgot Password</button>
                                     </div>
                                     <div class="input-control login-register">
                                         <button type="button" onclick="window.location.href='./register/check/'">Check Registration Request</button>

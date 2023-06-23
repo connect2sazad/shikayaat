@@ -440,6 +440,17 @@ function getCurrentUser(){
     return mysqli_fetch_assoc(getUserByUserid($_SESSION[USER_GLOBAL_VAR]));
 }
 
+function getAllUsers($is_active){
+    $query = "SELECT * FROM `users` WHERE `users`.`is_active` = ".$is_active." AND `users`.`is_deleted` = 0;";
+    $run_query = runQuery($query);
+    return $run_query;
+}
+
+function getDeletedUsers(){
+    $query = WHERE('users', 'is_deleted', 1);
+    $run_query = runQuery($query);
+    return $run_query;
+}
 
 // function createQueryForSEO($object, $table_name, $id)
 // {
@@ -536,6 +547,15 @@ function updatesystemVariables($list_of_variables, $current_admin)
     }
 }
 
+function create_OTP($userid){
+
+    $otpid = getRandomId(10, 'alpha_numeric');
+    $otp = getRandomId(6, 'numeric');
+    $otp = password_hash($otp, PASSWORD_DEFAULT);
+
+    $query = "INSERT INTO `otp_mgmt` (`otpid`, `userid`, `otp`) VALUES ('$otpid', '$userid', '$otp');";
+
+}
 
 
 
@@ -609,7 +629,8 @@ function api_test($request)
 function login($request)
 {
 
-    $query = WHERE('users', 'userid', $request['userid']);
+    // $query = WHERE('users', 'userid', $request['userid']);
+    $query = "SELECT * FROM `users` WHERE `users`.`userid` = '".$request['userid']."' OR `users`.`email` = '".$request['userid']."'";
     $run_query = runQuery($query);
 
 
@@ -783,6 +804,7 @@ function check_request_status($request)
             $response['request_status'] = $last_row['status'];
             $response['message'] = 'Your request is ' . $last_row['status'];
             $response['description'] = $last_row['description'];
+            $response['email'] = $last_row['email'];
         } else {
             $response['status'] = 'success';
             $response['request_status'] = 'not_found';
@@ -831,6 +853,17 @@ function change_request_status($request){
 
 }
 
+function forgot_password_send_otp($request) {
+    
+    $query = "SELECT * FROM `users` WHERE `users`.`email` = '" . $request['email'] . "'OR `users`.`userid` = '" . $request['email'] . "' AND `users`.`is_deleted` = 0;";
+    $run_query = runQuery($query);
+
+    $response = array();
+
+
+    return $response;
+
+}
 
 
 

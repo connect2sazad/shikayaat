@@ -208,6 +208,8 @@ if($complaint['userid'] == $_SESSION[USER_GLOBAL_VAR] || $complaint['to_userid']
         <div class="card fd-row">
             <div class="input-control m-0 action-buttons">
                 <button class="submit-btn bg-red" onclick="revoke_complaint('<?= $complaint['refno'] ?>')" id="revoke-<?= $complaint['refno'] ?>">REVOKE</button>
+                
+                <button class="submit-btn bg-blue" onclick="revoke_complaint('<?= $complaint['refno'] ?>')" id="revoke-<?= $complaint['refno'] ?>">ESCALATE</button>
 
                 <?php
                 $reminders = getRemindersByRefno($complaint['refno']);
@@ -227,7 +229,6 @@ if($complaint['userid'] == $_SESSION[USER_GLOBAL_VAR] || $complaint['to_userid']
                     $next_reminder_in_minutes = systemVariable('reminder_cool_down_minutes') - $minutes;
 
                     if ($next_reminder_in_minutes <= 0) {
-
                         echo '<button class="submit-btn bg-green" onclick="remind_complaint(\'' . $complaint['refno'] . '\')" id="reminder-' . $complaint['refno'] . '">REMIND</button>';
                     } else {
                         $hours = floor($next_reminder_in_minutes / 60);
@@ -240,8 +241,8 @@ if($complaint['userid'] == $_SESSION[USER_GLOBAL_VAR] || $complaint['to_userid']
                 ?>
 
 
-            </div>
-            <div class="input-control action-buttons">
+            <!-- </div>
+            <div class="input-control action-buttons"> -->
                 <button class="submit-btn" onclick="close_complaint('<?= $complaint['refno'] ?>')" id="close-<?= $complaint['refno'] ?>">CLOSE</button>
             </div>
         </div>

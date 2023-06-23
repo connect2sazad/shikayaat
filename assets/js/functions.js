@@ -226,3 +226,7 @@ function change_request_status(request_refno, new_status){
     }
   });
 }
+
+function change_user_status(userid, status) {  }
+
+function change_user_delete(userid, status) {  }

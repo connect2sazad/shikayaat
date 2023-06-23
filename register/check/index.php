@@ -9,6 +9,8 @@ if (!isset($_SESSION[USER_GLOBAL_VAR]) || !array_key_exists(USER_GLOBAL_VAR, $_S
     header('location: .');
 }
 
+$refno = isset($_GET['refno']) ? $_GET['refno'] : ' ';
+
 // ob_start("minifier");
 ?>
 <!DOCTYPE html>
@@ -41,7 +43,12 @@ if (!isset($_SESSION[USER_GLOBAL_VAR]) || !array_key_exists(USER_GLOBAL_VAR, $_S
                             backgroundColor: "#4fbe87",
                         }).showToast();
 
-                        $('#status-field').text(response.request_status+" | "+response.description);
+                        
+                        if(response.request_status == 'approved'){
+                            $('#status-field').html(response.request_status+' | <a href="../../login.php?uid='+btoa(response.email)+'">Login</a>');
+                        } else {
+                            $('#status-field').text(response.request_status+" | "+response.description);
+                        }
 
                     } else {
                         Toastify({
@@ -57,6 +64,11 @@ if (!isset($_SESSION[USER_GLOBAL_VAR]) || !array_key_exists(USER_GLOBAL_VAR, $_S
             });
         });
     </script>
+    <style>
+        a{
+            text-decoration: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -94,7 +106,7 @@ if (!isset($_SESSION[USER_GLOBAL_VAR]) || !array_key_exists(USER_GLOBAL_VAR, $_S
                                     <div class="input-control-row">
                                         <div class="input-control">
                                             <label for="email">Email Id or Request Reference No*</label>
-                                            <input type="text" id="email" name="email" autocomplete="off" spellcheck="false" required aria-required="true">
+                                            <input type="text" id="email" name="email" autocomplete="off" value="<?=$refno?>" spellcheck="false" required aria-required="true">
                                         </div>
                                         <div class="input-control">
                                             <label for="status_request_type">Request Type</label>

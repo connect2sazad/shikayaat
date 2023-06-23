@@ -1,70 +1,12 @@
 # shikayaat
 This project is used to raise complaints and queries.
 
+Shikayaat is a digital platform designed to provide users with a convenient and efficient way to lodge complaints with an organization. The system is accessible through a website or mobile application, and users can log in and submit complaints related to various aspects of the organization, such as products, services, or customer support.
 
-shikayaat is a digital complaint box that allows you to file complaints online and get instant feedback from the organisation. It is a web-based application that is designed to be used by people in the organisation to easify the long and hectic complain raising and resolving process by providing a suitable online platform for the complain filing and resolving.
+The primary objective of the Shikayaat system is to provide a transparent and reliable channel for users to report any issues or concerns them may have with an organization. By providing an easy-to-use interface, the system helps to ensure that complaints are lodged quickly and efficiently, leading to faster resolution times and improved customer satisfaction.
 
- - Developer
+The system's design is based on the principles of user-centricity and user experience. It features a simple and intuitive user interface, which allows users to log in and lodge complaints with ease. The system also provides users with real-time updates on the status of their complaints, ensuring that they are kept informed throughout the process.
 
-https://demos.themeselection.com/materio-mui-react-nextjs-admin-template-free/account-settings/
-https://codeseven.github.io/toastr/demo.html
+One of the key advantages of the Shikayaat system is that it enables organizations to address user complaints more efficiently. By providing a central repository for complaints, the system helps organizations to track and monitor the complaints, ensuring that they are dealt with in a timely and effective manner. This leads to improved customer satisfaction and can help to build trust and confidence in the organization.
 
-
-
-<?php
-  
-  // The plain text password to be hashed
-  $plaintext_password = "Password@123";
-  
-  // The hash of the password that
-  // can be stored in the database
-  $hash = password_hash($plaintext_password, 
-          PASSWORD_DEFAULT);
-  
-  // Print the generated hash
-  echo "Generated hash: ".$hash;
-?>
-
-<?php
-  
-  // Plaintext password entered by the user
-  $plaintext_password = "Password@123";
-  
-  // The hashed password retrieved from database
-  $hash = 
-"$2y$10$8sA2N5Sx/1zMQv2yrTDAaOFlbGWECrrgB68axL.hBb78NhQdyAqWm";
-  
-  // Verify the hash against the password entered
-  $verify = password_verify($plaintext_password, $hash);
-  
-  // Print the result depending if they match
-  if ($verify) {
-      echo 'Password Verified!';
-  } else {
-      echo 'Incorrect Password!';
-  }
-?>
-
-
-sample
-userid: connect2sazad
-password: Sa@127.0.0.1
-
-
-
-
-Design Ref: https://demo.w3layouts.com/demos_new/template_demo/06-01-2018/glance_design_dashboard-demo_Free/215073379/web/index.html?_gl=1*e616v9*_ga*MTUzNTIzMDM5OC4xNjc5OTgzOTAw*_ga_EGV5GTJEP5*MTY3OTk4Mzg5OS4xLjAuMTY3OTk4Mzg5OS4wLjAuMA..*_ga_9HSZ46TKMQ*MTY3OTk4Mzg5OS4xLjEuMTY3OTk4Mzg5OS4wLjAuMA..&_ga=2.2773552.123946019.1679983900-1535230398.1679983900
-
-
-
-
-
-Gyming 6.30am to 8.30am
-Cleaning & Maintenance 8.30am to 9.00
-Personal Care 9.00am to 9.30am
-Office/Skills/Etc 9.30am to 5.30pm
-Driving/Cooking 5.30pm to 6.30pm
-IELTS/GRE/Interview Prep 6.30am to 8.30pm
-Gyming 8.30am to 9.30pm
-
-
+Another advantage of the system is that it helps to promote transparency and accountability in organizations. By providing a digital record of complaints and their resolutions, the system helps to ensure that organizations are held accountable for their actions, and that users can access this information when needed.
