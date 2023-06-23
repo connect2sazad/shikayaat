@@ -59,12 +59,3 @@ Design Ref: https://demo.w3layouts.com/demos_new/template_demo/06-01-2018/glance
 
 
 
-Gyming 6.30am to 8.30am
-Cleaning & Maintenance 8.30am to 9.00
-Personal Care 9.00am to 9.30am
-Office/Skills/Etc 9.30am to 5.30pm
-Driving/Cooking 5.30pm to 6.30pm
-IELTS/GRE/Interview Prep 6.30am to 8.30pm
-Gyming 8.30am to 9.30pm
-
-
