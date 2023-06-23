@@ -10,3 +10,5 @@ The system's design is based on the principles of user-centricity and user exper
 One of the key advantages of the Shikayaat system is that it enables organizations to address user complaints more efficiently. By providing a central repository for complaints, the system helps organizations to track and monitor the complaints, ensuring that they are dealt with in a timely and effective manner. This leads to improved customer satisfaction and can help to build trust and confidence in the organization.
 
 Another advantage of the system is that it helps to promote transparency and accountability in organizations. By providing a digital record of complaints and their resolutions, the system helps to ensure that organizations are held accountable for their actions, and that users can access this information when needed.
+
+-- Developers
