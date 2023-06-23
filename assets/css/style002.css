@@ -1,0 +1,340 @@
+@import url(./base.css);
+
+.project-title-container {
+    height: 100%;
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -webkit-user-drag: none;
+}
+
+.logo-img {
+    height: 100%;
+    width: var(--header-height);
+}
+
+.content-wrapper .input-control input[type="text"],
+.content-wrapper .input-control input[type="email"],
+.content-wrapper .input-control input[type="password"],
+.content-wrapper .input-control select,
+.content-wrapper .input-control textarea {
+    background-color: transparent;
+}
+
+.content-wrapper .input-control label,
+.content-wrapper .input-control select,
+.content-wrapper .input-control textarea,
+.content-wrapper .input-control input[type="text"] {
+    color: var(--black);
+}
+
+.content-wrapper .input-control textarea {
+    resize: vertical;
+}
+
+.content-wrapper .input-control select option {
+    margin: 40px !important;
+    background: rgba(0, 0, 0, 0.3);
+    color: #fff;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+    background-color: var(--primary-button-color);
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#saved-complaint{
+    display: none;
+}
+
+.checkmark__circle {
+    stroke-dasharray: 166;
+    stroke-dashoffset: 166;
+    stroke-width: 2;
+    stroke-miterlimit: 10;
+    stroke: var(--section-border-color);
+    fill: none;
+    animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+
+.checkmark {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: block;
+    stroke-width: 2;
+    stroke: #fff;
+    stroke-miterlimit: 10;
+    margin: 10% auto;
+    box-shadow: inset 0px 0px 0px var(--section-border-color);
+    animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
+}
+
+.checkmark__check {
+    transform-origin: 50% 50%;
+    stroke-dasharray: 48;
+    stroke-dashoffset: 48;
+    animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+}
+
+@keyframes stroke {
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes scale {
+    0%, 100% {
+        transform: none;
+    }
+
+    50% {
+        transform: scale3d(1.1, 1.1, 1);
+    }
+}
+
+@keyframes fill {
+    100% {
+        box-shadow: inset 0px 0px 0px 30px var(--section-border-color);
+    }
+}
+
+.message-text{
+    color: var(--primary-color);
+    width: 100%;
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* ALL COMPLAINTS */
+/* .styled-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    border-bottom: 2px solid var(--section-border-color);
+    width: 100%;
+}
+.styled-table thead tr {
+    background-color: var(--section-border-color);
+    color: var(--primary-color);
+    text-align: left;
+}
+
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+}
+.styled-table tbody tr {
+    border-bottom: 1px solid var(--section-border-color);
+}
+
+
+.styled-table tbody tr.high td a,
+.styled-table tbody tr.medium td a,
+.styled-table tbody tr.low td a{
+    all: unset;
+    cursor: pointer;
+}
+
+.styled-table tbody tr.high td a:hover,
+.styled-table tbody tr.medium td a:hover,
+.styled-table tbody tr.low td a:hover{
+    text-decoration: underline;
+}
+
+.styled-table tbody tr.high{
+    background-color: red;
+    color: var(--primary-color);
+}
+
+.styled-table tbody tr.medium{
+    background-color: yellow;
+    color: var(--black);
+}
+
+.styled-table tbody tr.low{
+    background-color: var(--primary-color);
+    color: var(--black);
+}
+
+.styled-table tbody tr:hover {
+    background-color: var(--left-nav-menu-hover);
+    color: var(--primary-color);
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid var(--section-border-color);
+}
+.styled-table tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
+}
+
+.styled-table tbody tr.solved,
+.styled-table tbody tr.solved:hover{
+    background-color: #dddddd!important;
+    color: var(--black)!important;
+} */
+
+.colors-meaning{
+    width: 100%;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.colors-meaning input[type="color"]{
+    height: 30px;
+    width: 30px;
+    border: 1px solid var(--section-border-color);
+}
+
+.color-indentity-holder{
+    height: 100%;
+    width: auto;
+    display: flex;
+    flex-direction: row;
+}
+
+.color-indentity-holder .color-box{
+    height: 28px;
+    width: 28px;
+    border: 1px solid var(--section-border-color);
+}
+
+.color-indentity-holder .color-meaning{
+    height: 100%;
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    color: var(--black);
+}
+
+.color-red{
+    background-color: red;
+}
+
+.color-yellow{
+    background-color: yellow;
+}
+
+.color-white{
+    background-color: var(--primary-color);
+}
+
+.color-dddddd{
+    background-color: #dddddd;
+}
+
+.color-c04848{
+    background-color: #c04848;
+}
+
+.texts-holder{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    color: var(--black);
+}
+
+.font-size-25{
+    font-size: 25px;
+}
+
+.font-size-35{
+    font-size: 35px;
+}
+
+.texts-holder a{
+    text-decoration: none;
+    /* color: var(--primary-color); */
+}
+
+.texts-holder a:hover{
+    text-decoration: underline;
+}
+
+.text-align-justify{
+    text-align: justify;
+}
+
+.news-and-events{
+    height: 410px;
+    width: 100%;
+    max-width: 100%;
+    /* background-color: red; */
+}
+
+.news-and-events .swiper-wrapper{
+    height: 100%;
+    width: 100%;
+}
+
+.news-and-events .swiper-wrapper .swiper-slide{
+    height: calc(50% - 2 * 20px)!important;
+    width: calc(100% - 2 * 20px);
+    padding: 20px;
+    overflow: hidden;
+}
+
+.news-and-events .swiper-wrapper .swiper-slide .news-title{
+    font-size: 18px;
+    font-weight: bold;
+    text-align: justify;
+}
+
+.news-and-events .swiper-wrapper .swiper-slide .news-date{
+    font-size: 14px;
+    font-weight: bold;
+    text-align: justify;
+    color: #BEB2B2;
+}
+
+.news-and-events .swiper-wrapper .swiper-slide .news-description{
+    font-size: 16px;
+    font-weight: bold;
+    text-align: justify;
+    color: #8A8585;
+}

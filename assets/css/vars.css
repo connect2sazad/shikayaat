@@ -1,0 +1,27 @@
+:root{
+
+    /* colors */
+    --body-bg: #355C7D;
+    /* --header-bg: #7745DB; */
+    --header-bg: #0737a0;
+    --body-moz-bg: -moz-linear-gradient(to right, #C06C84, #6C5B7B, #355C7D);
+    --body-webkit-bg: -webkit-linear-gradient(to right, #C06C84, #6C5B7B, #355C7D);
+    --body-gradient-bg: linear-gradient(to right, #C06C84, #6C5B7B, #355C7D);
+    --body-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#5b555d", endColorstr="#5b555d", GradientType=1);
+    --form-inner-wrapper-bg: #5E17EB;
+    --form-input-border: #a8c0ff;
+    --section-border-color: #5E17EB;
+    --primary-color: white;
+    --primary-black-color: #3d3d39;
+    --primary-button-color: #924FC3;
+    --primary-button-color-hover: #5E17EB;
+    --left-nav-bg: #5E17EB;
+    --left-nav-menu-hover: #A8A5A5;
+    --black: rgb(49, 48, 48);
+    
+    /* others */
+    --primary-border-radius: 15px;
+    --header-height: 40px;
+    --header-padding: 15px;
+
+}
