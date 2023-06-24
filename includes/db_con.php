@@ -5,6 +5,7 @@
     // $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD) or die('Error connecting to MySQL server.');
 
     // mysqli_select_db($conn, DB) or die('Error selecting database.');
+    // mysqli_select_db($conn, DB) or die('Error selecting database.');
     
     
     
